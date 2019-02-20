@@ -68,4 +68,481 @@ public class User {
 	private String lastEntry;//最后登入IP地址
 	private Date userRegistrationTime;//用户注册时间
 	private Date recentEntry;//用户最后登入时间
+	public Integer getUserID() {
+		return userID;
+	}
+	public void setUserID(Integer userID) {
+		this.userID = userID;
+	}
+	public String getUserImgPath() {
+		return userImgPath;
+	}
+	public void setUserImgPath(String userImgPath) {
+		this.userImgPath = userImgPath;
+	}
+	public String getUserName() {
+		return userName;
+	}
+	public void setUserName(String userName) {
+		this.userName = userName;
+	}
+	public String getUserRealName() {
+		return userRealName;
+	}
+	public void setUserRealName(String userRealName) {
+		this.userRealName = userRealName;
+	}
+	public Integer getUserSex() {
+		return userSex;
+	}
+	public void setUserSex(Integer userSex) {
+		this.userSex = userSex;
+	}
+	public String getUserPhone() {
+		return userPhone;
+	}
+	public void setUserPhone(String userPhone) {
+		this.userPhone = userPhone;
+	}
+	public String getContactMailbox() {
+		return contactMailbox;
+	}
+	public void setContactMailbox(String contactMailbox) {
+		this.contactMailbox = contactMailbox;
+	}
+	public Float getUserMoney() {
+		return userMoney;
+	}
+	public void setUserMoney(Float userMoney) {
+		this.userMoney = userMoney;
+	}
+	public Integer getUserIntegral() {
+		return userIntegral;
+	}
+	public void setUserIntegral(Integer userIntegral) {
+		this.userIntegral = userIntegral;
+	}
+	public Integer getCountry() {
+		return country;
+	}
+	public void setCountry(Integer country) {
+		this.country = country;
+	}
+	public Integer getProvincialID() {
+		return provincialID;
+	}
+	public void setProvincialID(Integer provincialID) {
+		this.provincialID = provincialID;
+	}
+	public Integer getCityID() {
+		return cityID;
+	}
+	public void setCityID(Integer cityID) {
+		this.cityID = cityID;
+	}
+	public Integer getCountyID() {
+		return countyID;
+	}
+	public void setCountyID(Integer countyID) {
+		this.countyID = countyID;
+	}
+	public String getAdDetail() {
+		return adDetail;
+	}
+	public void setAdDetail(String adDetail) {
+		this.adDetail = adDetail;
+	}
+	public Integer getMerchantType() {
+		return merchantType;
+	}
+	public void setMerchantType(Integer merchantType) {
+		this.merchantType = merchantType;
+	}
+	public Date getMerchantRegistrationTime() {
+		return merchantRegistrationTime;
+	}
+	public void setMerchantRegistrationTime(Date merchantRegistrationTime) {
+		this.merchantRegistrationTime = merchantRegistrationTime;
+	}
+	public Integer getFirstServiceID() {
+		return firstServiceID;
+	}
+	public void setFirstServiceID(Integer firstServiceID) {
+		this.firstServiceID = firstServiceID;
+	}
+	public Integer getSecondServiceID() {
+		return secondServiceID;
+	}
+	public void setSecondServiceID(Integer secondServiceID) {
+		this.secondServiceID = secondServiceID;
+	}
+	public Float getFirstServiceMoney() {
+		return firstServiceMoney;
+	}
+	public void setFirstServiceMoney(Float firstServiceMoney) {
+		this.firstServiceMoney = firstServiceMoney;
+	}
+	public Float getSecondServiceMoney() {
+		return secondServiceMoney;
+	}
+	public void setSecondServiceMoney(Float secondServiceMoney) {
+		this.secondServiceMoney = secondServiceMoney;
+	}
+	public String getHospitalName() {
+		return hospitalName;
+	}
+	public void setHospitalName(String hospitalName) {
+		this.hospitalName = hospitalName;
+	}
+	public String getShopName() {
+		return shopName;
+	}
+	public void setShopName(String shopName) {
+		this.shopName = shopName;
+	}
+	public String getSignature() {
+		return signature;
+	}
+	public void setSignature(String signature) {
+		this.signature = signature;
+	}
+	public Float getGuaranteeMoney() {
+		return guaranteeMoney;
+	}
+	public void setGuaranteeMoney(Float guaranteeMoney) {
+		this.guaranteeMoney = guaranteeMoney;
+	}
+	public String getShopImg() {
+		return shopImg;
+	}
+	public void setShopImg(String shopImg) {
+		this.shopImg = shopImg;
+	}
+	public Integer getIdentityType() {
+		return identityType;
+	}
+	public void setIdentityType(Integer identityType) {
+		this.identityType = identityType;
+	}
+	public String getIdentityNumder() {
+		return identityNumder;
+	}
+	public void setIdentityNumder(String identityNumder) {
+		this.identityNumder = identityNumder;
+	}
+	public String getIdentityRealName() {
+		return identityRealName;
+	}
+	public void setIdentityRealName(String identityRealName) {
+		this.identityRealName = identityRealName;
+	}
+	public String getIdentityPositiveImg() {
+		return identityPositiveImg;
+	}
+	public void setIdentityPositiveImg(String identityPositiveImg) {
+		this.identityPositiveImg = identityPositiveImg;
+	}
+	public String getIdentityNegativeImg() {
+		return identityNegativeImg;
+	}
+	public void setIdentityNegativeImg(String identityNegativeImg) {
+		this.identityNegativeImg = identityNegativeImg;
+	}
+	public String getIdentityHandImg() {
+		return identityHandImg;
+	}
+	public void setIdentityHandImg(String identityHandImg) {
+		this.identityHandImg = identityHandImg;
+	}
+	public String getLanguageNameText() {
+		return languageNameText;
+	}
+	public void setLanguageNameText(String languageNameText) {
+		this.languageNameText = languageNameText;
+	}
+	public String getMajorNameText() {
+		return majorNameText;
+	}
+	public void setMajorNameText(String majorNameText) {
+		this.majorNameText = majorNameText;
+	}
+	public Integer getLiveCityID() {
+		return liveCityID;
+	}
+	public void setLiveCityID(Integer liveCityID) {
+		this.liveCityID = liveCityID;
+	}
+	public String getMerchantEmail() {
+		return merchantEmail;
+	}
+	public void setMerchantEmail(String merchantEmail) {
+		this.merchantEmail = merchantEmail;
+	}
+	public String getMerchantPhone() {
+		return merchantPhone;
+	}
+	public void setMerchantPhone(String merchantPhone) {
+		this.merchantPhone = merchantPhone;
+	}
+	public Float getMerchantLevel() {
+		return merchantLevel;
+	}
+	public void setMerchantLevel(Float merchantLevel) {
+		this.merchantLevel = merchantLevel;
+	}
+	public Integer getMerchantExp() {
+		return merchantExp;
+	}
+	public void setMerchantExp(Integer merchantExp) {
+		this.merchantExp = merchantExp;
+	}
+	public String getQq() {
+		return qq;
+	}
+	public void setQq(String qq) {
+		this.qq = qq;
+	}
+	public String getWeChat() {
+		return weChat;
+	}
+	public void setWeChat(String weChat) {
+		this.weChat = weChat;
+	}
+	public String getProfession() {
+		return profession;
+	}
+	public void setProfession(String profession) {
+		this.profession = profession;
+	}
+	public Float getHeight() {
+		return height;
+	}
+	public void setHeight(Float height) {
+		this.height = height;
+	}
+	public String getConstellation() {
+		return constellation;
+	}
+	public void setConstellation(String constellation) {
+		this.constellation = constellation;
+	}
+	public Integer getAge() {
+		return age;
+	}
+	public void setAge(Integer age) {
+		this.age = age;
+	}
+	public String getSelfIntroduction() {
+		return selfIntroduction;
+	}
+	public void setSelfIntroduction(String selfIntroduction) {
+		this.selfIntroduction = selfIntroduction;
+	}
+	public Integer getCollectCount() {
+		return collectCount;
+	}
+	public void setCollectCount(Integer collectCount) {
+		this.collectCount = collectCount;
+	}
+	public Integer getOrderCount() {
+		return orderCount;
+	}
+	public void setOrderCount(Integer orderCount) {
+		this.orderCount = orderCount;
+	}
+	public Integer getBrowseNumber() {
+		return browseNumber;
+	}
+	public void setBrowseNumber(Integer browseNumber) {
+		this.browseNumber = browseNumber;
+	}
+	public Boolean getTrusteeship() {
+		return trusteeship;
+	}
+	public void setTrusteeship(Boolean trusteeship) {
+		this.trusteeship = trusteeship;
+	}
+	public Date getTrusteeshipStartTime() {
+		return trusteeshipStartTime;
+	}
+	public void setTrusteeshipStartTime(Date trusteeshipStartTime) {
+		this.trusteeshipStartTime = trusteeshipStartTime;
+	}
+	public Integer getTrusteeshipMonth() {
+		return trusteeshipMonth;
+	}
+	public void setTrusteeshipMonth(Integer trusteeshipMonth) {
+		this.trusteeshipMonth = trusteeshipMonth;
+	}
+	public Integer getBusinessState() {
+		return businessState;
+	}
+	public void setBusinessState(Integer businessState) {
+		this.businessState = businessState;
+	}
+	public Integer getExperience() {
+		return experience;
+	}
+	public void setExperience(Integer experience) {
+		this.experience = experience;
+	}
+	public Boolean getExperienceStatus() {
+		return experienceStatus;
+	}
+	public void setExperienceStatus(Boolean experienceStatus) {
+		this.experienceStatus = experienceStatus;
+	}
+	public Integer getAuditStatus() {
+		return auditStatus;
+	}
+	public void setAuditStatus(Integer auditStatus) {
+		this.auditStatus = auditStatus;
+	}
+	public String getReason() {
+		return reason;
+	}
+	public void setReason(String reason) {
+		this.reason = reason;
+	}
+	public Boolean getAuthentication() {
+		return authentication;
+	}
+	public void setAuthentication(Boolean authentication) {
+		this.authentication = authentication;
+	}
+	public Boolean getAuthenticationer() {
+		return authenticationer;
+	}
+	public void setAuthenticationer(Boolean authenticationer) {
+		this.authenticationer = authenticationer;
+	}
+	public Integer getCreditScore() {
+		return creditScore;
+	}
+	public void setCreditScore(Integer creditScore) {
+		this.creditScore = creditScore;
+	}
+	public Boolean getStateboolean() {
+		return stateboolean;
+	}
+	public void setStateboolean(Boolean stateboolean) {
+		this.stateboolean = stateboolean;
+	}
+	public Boolean getMailboxVerification() {
+		return mailboxVerification;
+	}
+	public void setMailboxVerification(Boolean mailboxVerification) {
+		this.mailboxVerification = mailboxVerification;
+	}
+	public String getRegisterIP() {
+		return registerIP;
+	}
+	public void setRegisterIP(String registerIP) {
+		this.registerIP = registerIP;
+	}
+	public String getLastEntry() {
+		return lastEntry;
+	}
+	public void setLastEntry(String lastEntry) {
+		this.lastEntry = lastEntry;
+	}
+	public Date getUserRegistrationTime() {
+		return userRegistrationTime;
+	}
+	public void setUserRegistrationTime(Date userRegistrationTime) {
+		this.userRegistrationTime = userRegistrationTime;
+	}
+	public Date getRecentEntry() {
+		return recentEntry;
+	}
+	public void setRecentEntry(Date recentEntry) {
+		this.recentEntry = recentEntry;
+	}
+	public User(Integer userID, String userImgPath, String userName, String userRealName, Integer userSex,
+			String userPhone, String contactMailbox, Float userMoney, Integer userIntegral, Integer country,
+			Integer provincialID, Integer cityID, Integer countyID, String adDetail, Integer merchantType,
+			Date merchantRegistrationTime, Integer firstServiceID, Integer secondServiceID, Float firstServiceMoney,
+			Float secondServiceMoney, String hospitalName, String shopName, String signature, Float guaranteeMoney,
+			String shopImg, Integer identityType, String identityNumder, String identityRealName,
+			String identityPositiveImg, String identityNegativeImg, String identityHandImg, String languageNameText,
+			String majorNameText, Integer liveCityID, String merchantEmail, String merchantPhone, Float merchantLevel,
+			Integer merchantExp, String qq, String weChat, String profession, Float height, String constellation,
+			Integer age, String selfIntroduction, Integer collectCount, Integer orderCount, Integer browseNumber,
+			Boolean trusteeship, Date trusteeshipStartTime, Integer trusteeshipMonth, Integer businessState,
+			Integer experience, Boolean experienceStatus, Integer auditStatus, String reason, Boolean authentication,
+			Boolean authenticationer, Integer creditScore, Boolean stateboolean, Boolean mailboxVerification,
+			String registerIP, String lastEntry, Date userRegistrationTime, Date recentEntry) {
+		super();
+		this.userID = userID;
+		this.userImgPath = userImgPath;
+		this.userName = userName;
+		this.userRealName = userRealName;
+		this.userSex = userSex;
+		this.userPhone = userPhone;
+		this.contactMailbox = contactMailbox;
+		this.userMoney = userMoney;
+		this.userIntegral = userIntegral;
+		this.country = country;
+		this.provincialID = provincialID;
+		this.cityID = cityID;
+		this.countyID = countyID;
+		this.adDetail = adDetail;
+		this.merchantType = merchantType;
+		this.merchantRegistrationTime = merchantRegistrationTime;
+		this.firstServiceID = firstServiceID;
+		this.secondServiceID = secondServiceID;
+		this.firstServiceMoney = firstServiceMoney;
+		this.secondServiceMoney = secondServiceMoney;
+		this.hospitalName = hospitalName;
+		this.shopName = shopName;
+		this.signature = signature;
+		this.guaranteeMoney = guaranteeMoney;
+		this.shopImg = shopImg;
+		this.identityType = identityType;
+		this.identityNumder = identityNumder;
+		this.identityRealName = identityRealName;
+		this.identityPositiveImg = identityPositiveImg;
+		this.identityNegativeImg = identityNegativeImg;
+		this.identityHandImg = identityHandImg;
+		this.languageNameText = languageNameText;
+		this.majorNameText = majorNameText;
+		this.liveCityID = liveCityID;
+		this.merchantEmail = merchantEmail;
+		this.merchantPhone = merchantPhone;
+		this.merchantLevel = merchantLevel;
+		this.merchantExp = merchantExp;
+		this.qq = qq;
+		this.weChat = weChat;
+		this.profession = profession;
+		this.height = height;
+		this.constellation = constellation;
+		this.age = age;
+		this.selfIntroduction = selfIntroduction;
+		this.collectCount = collectCount;
+		this.orderCount = orderCount;
+		this.browseNumber = browseNumber;
+		this.trusteeship = trusteeship;
+		this.trusteeshipStartTime = trusteeshipStartTime;
+		this.trusteeshipMonth = trusteeshipMonth;
+		this.businessState = businessState;
+		this.experience = experience;
+		this.experienceStatus = experienceStatus;
+		this.auditStatus = auditStatus;
+		this.reason = reason;
+		this.authentication = authentication;
+		this.authenticationer = authenticationer;
+		this.creditScore = creditScore;
+		this.stateboolean = stateboolean;
+		this.mailboxVerification = mailboxVerification;
+		this.registerIP = registerIP;
+		this.lastEntry = lastEntry;
+		this.userRegistrationTime = userRegistrationTime;
+		this.recentEntry = recentEntry;
+	}
+	public User() {
+		super();
+	}
+	
+	
+	
 }

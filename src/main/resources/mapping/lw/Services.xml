@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.accp.reception.dao.lw.ServicesDao">
+
+	  <!-- 发布服务-->
+    	<insert id="addservies">
+    		INSERT INTO `services` (`stid`, `userID`, `resourceID`,`serviceTitle`, `serviceFuTitle`,`downloadTitle`,`servicePrice`,
+		 `serviceCoverImg`, `serviceImgUrlOne`,`serviceImgUrlTwo`, `serviceImgUrlThree`, `serviceImgUrlFour`,
+		  `serviceCostTypeID`,`serviceIntro`, `serviceCity`,`country`, `serviceCostInclude`, 
+		   `serviceStartDate`,`serviceEndDate`, `schoolRegion`, `schoolNameByCN`,`majoyNameByCN`,
+		   `schoolNameByROK`, `majoyNameByROK`,`goodAtMajoy`,`hospitalName`,`serviceHour`, `uploadDataUrl`,`releaseTime`,
+		    `browseNumber`,`weight`,`recommendBool`, `adminOpinion`,`auditStatus`)VALUES 
+		  (#{services.stid},#{services.userID},#{services.resourceID},#{services.serviceTitle},#{services.serviceFuTitle},
+		  #{services.downloadTitle},#{services.servicePrice},#{services.serviceCoverImg},#{services.serviceImgUrlOne},#{services.serviceImgUrlTwo},
+		  #{services.serviceImgUrlThree}, #{services.serviceImgUrlFour},#{services.serviceCostTypeID},#{services.serviceIntro},
+		  #{services.serviceCity},#{services.country},#{services.serviceCostInclude},#{services.serviceStartDate},#{services.serviceEndDate},
+		  #{services.schoolRegion},#{services.schoolNameByCN},#{services.majoyNameByCN},#{services.schoolNameByROK},#{services.majoyNameByROK},#{services.goodAtMajoy},
+		  #{services.hospitalName},#{services.serviceHour},#{services.uploadDataUrl},NOW(),#{services.browseNumber},#{services.weight},#{services.recommendBool},#{services.adminOpinion},2);
+    	</insert>
+
+</mapper>
