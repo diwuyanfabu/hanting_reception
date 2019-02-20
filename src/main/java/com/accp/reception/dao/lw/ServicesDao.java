@@ -16,4 +16,6 @@ public interface ServicesDao {
 	* @return
 	 */
 	public int addservies(@Param("services")Services services);
+	
+	
 }
