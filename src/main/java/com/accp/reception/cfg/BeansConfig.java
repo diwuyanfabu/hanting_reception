@@ -17,7 +17,7 @@ import com.alibaba.fastjson.support.spring.FastJsonHttpMessageConverter;
 import com.github.pagehelper.PageHelper;
 
 @Configuration
-@MapperScan(basePackages = { "com.accp.backstage.dao" })
+@MapperScan(basePackages = { "com.accp.reception.dao" })
 @EnableTransactionManagement
 @EnableScheduling
 public class BeansConfig {
