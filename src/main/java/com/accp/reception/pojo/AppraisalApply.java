@@ -49,6 +49,301 @@ public class AppraisalApply {
 		private Date cityID;//审核时间
 		private String adminOpinion;//	审批备注
 		private Integer auditStatus;//审核状态(1待审核2审核成功3未通过)
+		public Integer getApplyID() {
+			return applyID;
+		}
+		public void setApplyID(Integer applyID) {
+			this.applyID = applyID;
+		}
+		public Integer getUserID() {
+			return userID;
+		}
+		public void setUserID(Integer userID) {
+			this.userID = userID;
+		}
+		public Integer getStid() {
+			return stid;
+		}
+		public void setStid(Integer stid) {
+			this.stid = stid;
+		}
+		public String getName() {
+			return name;
+		}
+		public void setName(String name) {
+			this.name = name;
+		}
+		public Integer getSex() {
+			return sex;
+		}
+		public void setSex(Integer sex) {
+			this.sex = sex;
+		}
+		public Integer getHeight() {
+			return height;
+		}
+		public void setHeight(Integer height) {
+			this.height = height;
+		}
+		public String getConstellation() {
+			return constellation;
+		}
+		public void setConstellation(String constellation) {
+			this.constellation = constellation;
+		}
+		public Integer getAge() {
+			return age;
+		}
+		public void setAge(Integer age) {
+			this.age = age;
+		}
+		public String getVisaType() {
+			return visaType;
+		}
+		public void setVisaType(String visaType) {
+			this.visaType = visaType;
+		}
+		public Integer getDocumentType() {
+			return documentType;
+		}
+		public void setDocumentType(Integer documentType) {
+			this.documentType = documentType;
+		}
+		public String getCertificates() {
+			return certificates;
+		}
+		public void setCertificates(String certificates) {
+			this.certificates = certificates;
+		}
+		public String getExperience() {
+			return experience;
+		}
+		public void setExperience(String experience) {
+			this.experience = experience;
+		}
+		public Boolean getVehicle() {
+			return vehicle;
+		}
+		public void setVehicle(Boolean vehicle) {
+			this.vehicle = vehicle;
+		}
+		public Boolean getGuideCard() {
+			return guideCard;
+		}
+		public void setGuideCard(Boolean guideCard) {
+			this.guideCard = guideCard;
+		}
+		public String getInKorea() {
+			return inKorea;
+		}
+		public void setInKorea(String inKorea) {
+			this.inKorea = inKorea;
+		}
+		public String getPhone() {
+			return phone;
+		}
+		public void setPhone(String phone) {
+			this.phone = phone;
+		}
+		public String getEmail() {
+			return email;
+		}
+		public void setEmail(String email) {
+			this.email = email;
+		}
+		public String getCountry() {
+			return country;
+		}
+		public void setCountry(String country) {
+			this.country = country;
+		}
+		public String getProvincialID() {
+			return provincialID;
+		}
+		public void setProvincialID(String provincialID) {
+			this.provincialID = provincialID;
+		}
+		public String getHospitalLicense() {
+			return hospitalLicense;
+		}
+		public void setHospitalLicense(String hospitalLicense) {
+			this.hospitalLicense = hospitalLicense;
+		}
+		public String getCooperativeHospital() {
+			return cooperativeHospital;
+		}
+		public void setCooperativeHospital(String cooperativeHospital) {
+			this.cooperativeHospital = cooperativeHospital;
+		}
+		public String getCooperativeHospitalURL() {
+			return cooperativeHospitalURL;
+		}
+		public void setCooperativeHospitalURL(String cooperativeHospitalURL) {
+			this.cooperativeHospitalURL = cooperativeHospitalURL;
+		}
+		public String getHospitalPhone() {
+			return hospitalPhone;
+		}
+		public void setHospitalPhone(String hospitalPhone) {
+			this.hospitalPhone = hospitalPhone;
+		}
+		public Integer getTranslateType() {
+			return translateType;
+		}
+		public void setTranslateType(Integer translateType) {
+			this.translateType = translateType;
+		}
+		public String getTranslate() {
+			return translate;
+		}
+		public void setTranslate(String translate) {
+			this.translate = translate;
+		}
+		public Boolean getOffice() {
+			return office;
+		}
+		public void setOffice(Boolean office) {
+			this.office = office;
+		}
+		public String getOfficeCountry() {
+			return officeCountry;
+		}
+		public void setOfficeCountry(String officeCountry) {
+			this.officeCountry = officeCountry;
+		}
+		public String getOfficeProvince() {
+			return officeProvince;
+		}
+		public void setOfficeProvince(String officeProvince) {
+			this.officeProvince = officeProvince;
+		}
+		public String getOfficeCity() {
+			return officeCity;
+		}
+		public void setOfficeCity(String officeCity) {
+			this.officeCity = officeCity;
+		}
+		public String getOfficeDetailed() {
+			return officeDetailed;
+		}
+		public void setOfficeDetailed(String officeDetailed) {
+			this.officeDetailed = officeDetailed;
+		}
+		public String getKoreaLicense() {
+			return koreaLicense;
+		}
+		public void setKoreaLicense(String koreaLicense) {
+			this.koreaLicense = koreaLicense;
+		}
+		public String getTranslateWebsite() {
+			return translateWebsite;
+		}
+		public void setTranslateWebsite(String translateWebsite) {
+			this.translateWebsite = translateWebsite;
+		}
+		public String getStudyMajor() {
+			return studyMajor;
+		}
+		public void setStudyMajor(String studyMajor) {
+			this.studyMajor = studyMajor;
+		}
+		public String getSchoolReport() {
+			return schoolReport;
+		}
+		public void setSchoolReport(String schoolReport) {
+			this.schoolReport = schoolReport;
+		}
+		public String getOfficialNetworkURL() {
+			return officialNetworkURL;
+		}
+		public void setOfficialNetworkURL(String officialNetworkURL) {
+			this.officialNetworkURL = officialNetworkURL;
+		}
+		public String getStrength() {
+			return strength;
+		}
+		public void setStrength(String strength) {
+			this.strength = strength;
+		}
+		public Date getSubmitTime() {
+			return submitTime;
+		}
+		public void setSubmitTime(Date submitTime) {
+			this.submitTime = submitTime;
+		}
+		public Date getCityID() {
+			return cityID;
+		}
+		public void setCityID(Date cityID) {
+			this.cityID = cityID;
+		}
+		public String getAdminOpinion() {
+			return adminOpinion;
+		}
+		public void setAdminOpinion(String adminOpinion) {
+			this.adminOpinion = adminOpinion;
+		}
+		public Integer getAuditStatus() {
+			return auditStatus;
+		}
+		public void setAuditStatus(Integer auditStatus) {
+			this.auditStatus = auditStatus;
+		}
+		public AppraisalApply(Integer applyID, Integer userID, Integer stid, String name, Integer sex, Integer height,
+				String constellation, Integer age, String visaType, Integer documentType, String certificates,
+				String experience, Boolean vehicle, Boolean guideCard, String inKorea, String phone, String email,
+				String country, String provincialID, String hospitalLicense, String cooperativeHospital,
+				String cooperativeHospitalURL, String hospitalPhone, Integer translateType, String translate,
+				Boolean office, String officeCountry, String officeProvince, String officeCity, String officeDetailed,
+				String koreaLicense, String translateWebsite, String studyMajor, String schoolReport,
+				String officialNetworkURL, String strength, Date submitTime, Date cityID, String adminOpinion,
+				Integer auditStatus) {
+			super();
+			this.applyID = applyID;
+			this.userID = userID;
+			this.stid = stid;
+			this.name = name;
+			this.sex = sex;
+			this.height = height;
+			this.constellation = constellation;
+			this.age = age;
+			this.visaType = visaType;
+			this.documentType = documentType;
+			this.certificates = certificates;
+			this.experience = experience;
+			this.vehicle = vehicle;
+			this.guideCard = guideCard;
+			this.inKorea = inKorea;
+			this.phone = phone;
+			this.email = email;
+			this.country = country;
+			this.provincialID = provincialID;
+			this.hospitalLicense = hospitalLicense;
+			this.cooperativeHospital = cooperativeHospital;
+			this.cooperativeHospitalURL = cooperativeHospitalURL;
+			this.hospitalPhone = hospitalPhone;
+			this.translateType = translateType;
+			this.translate = translate;
+			this.office = office;
+			this.officeCountry = officeCountry;
+			this.officeProvince = officeProvince;
+			this.officeCity = officeCity;
+			this.officeDetailed = officeDetailed;
+			this.koreaLicense = koreaLicense;
+			this.translateWebsite = translateWebsite;
+			this.studyMajor = studyMajor;
+			this.schoolReport = schoolReport;
+			this.officialNetworkURL = officialNetworkURL;
+			this.strength = strength;
+			this.submitTime = submitTime;
+			this.cityID = cityID;
+			this.adminOpinion = adminOpinion;
+			this.auditStatus = auditStatus;
+		}
+		public AppraisalApply() {
+			super();
+			// TODO Auto-generated constructor stub
+		}
 		
 		
 }

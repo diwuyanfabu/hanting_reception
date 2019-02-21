@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.accp.reception.dao.lw.ServicesDao">
+	<!-- 自定义：查询所有 -->
+	<sql id="selectAll">
+		select * from
+	</sql>
+	
+	<!-- 查询服务类别（如自驾游、微整形） -->
+	<select id="queryServiceType" resultType="ServiceType">
+		<include refid="selectAll"/>
+		`servicetype`
+		<where>
+			<if test="stpid==null and selectNum==null">
+				`stPid` IS NULL
+			</if>
+			<if test="stpid!=null and selectNum==1">
+				`stPid` = #{stpid}
+			</if>
+			<if test="stpid!=null and selectNum==2">
+				`stPid` = (SELECT `stPid` FROM `servicetype` WHERE `stid` = #{stpid})
+			</if>
+		</where>
+	</select>
+	
+	<!-- 查询服务语言 -->
+	<select id="queryLanguagetype" resultType="LanguageType">
+		<include refid="selectAll"/>
+		`languagetype`
+	</select>
+	
+	<!-- 查询擅长专业 -->
+	<select id="queryMajortype" resultType="MajorType">
+		<include refid="selectAll"/>
+		`majortype`
+	</select>
+	
+	<!-- 查询中韩行政地区 -->
+	<select id="querySharea" resultType="ShArea">
+		<include refid="selectAll"/>
+		`sharea` 
+		<where>
+			<if test="pid==null and flag==false">
+				`level` = 0
+			</if>
+			<if test="pid!=null and flag==false">
+				`pid` = #{pid}
+			</if>
+			<if test="pid!=2 and flag==true">
+				`pid` IN (SELECT `areaID` FROM `sharea` WHERE `pid` = #{pid})
+			</if>
+			<if test="pid==2 and flag==true">
+				`pid` = 2
+			</if>
+		</where>
+	</select>
+	
+	<!-- 查询商家入驻时缴纳保证金额 -->
+	<select id="queryBond" resultType="java.lang.Float">
+		SELECT bond FROM `system` LIMIT 1
+	</select>
+	
+	  <!-- 发布服务-->
+    	<insert id="addservies">
+    		INSERT INTO `services` (`stid`, `userID`, `resourceID`,`serviceTitle`, `serviceFuTitle`,`downloadTitle`,`servicePrice`,
+		 `serviceCoverImg`, `serviceImgUrlOne`,`serviceImgUrlTwo`, `serviceImgUrlThree`, `serviceImgUrlFour`,
+		  `serviceCostTypeID`,`serviceIntro`, `serviceCity`,`country`, `serviceCostInclude`, 
+		   `serviceStartDate`,`serviceEndDate`, `schoolRegion`, `schoolNameByCN`,`majoyNameByCN`,
+		   `schoolNameByROK`, `majoyNameByROK`,`goodAtMajoy`,`hospitalName`,`serviceHour`, `uploadDataUrl`,`releaseTime`,
+		    `browseNumber`,`weight`,`recommendBool`, `adminOpinion`,`auditStatus`)VALUES 
+		  (#{services.stid},#{services.userID},#{services.resourceID},#{services.serviceTitle},#{services.serviceFuTitle},
+		  #{services.downloadTitle},#{services.servicePrice},#{services.serviceCoverImg},#{services.serviceImgUrlOne},#{services.serviceImgUrlTwo},
+		  #{services.serviceImgUrlThree}, #{services.serviceImgUrlFour},#{services.serviceCostTypeID},#{services.serviceIntro},
+		  #{services.serviceCity},#{services.country},#{services.serviceCostInclude},#{services.serviceStartDate},#{services.serviceEndDate},
+		  #{services.schoolRegion},#{services.schoolNameByCN},#{services.majoyNameByCN},#{services.schoolNameByROK},#{services.majoyNameByROK},#{services.goodAtMajoy},
+		  #{services.hospitalName},#{services.serviceHour},#{services.uploadDataUrl},NOW(),#{services.browseNumber},#{services.weight},#{services.recommendBool},#{services.adminOpinion},2);
+    	</insert>
+			
+</mapper>

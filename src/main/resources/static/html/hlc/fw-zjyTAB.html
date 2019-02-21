@@ -71,7 +71,7 @@
 						<dt><span class="sel_sp ss4"></span>国家</dt>
 						<dd>
 							<a class="cur" href="javascript:void(0);" id="countryAll"> 全部</a>
-							<a href="javascript:void(0);" th:each="temp,iterState : ${countryList}" th:text="${temp.name}" th:attr="data-id=${temp.areaid}" th:v-on:click="|queryCity(${temp.areaid})|">中国</a>
+							<a href="javascript:void(0);" th:each="temp,iterState : ${countryList}" th:text="${temp.name}" th:attr="data-id=${temp.areaID}" th:v-on:click="|queryCity(${temp.areaID})|">中国</a>
 						</dd>
 						<dd>
 						</dd>
@@ -214,11 +214,6 @@
 			$(".top_right").append($('<a href="/c/lhy/center/home">'+data.username+'</a> <span class="ht_line"></span><a href="/c/szy/user/close">退出</a><span class="ht_line"></span><a href="/xx-xtxx.html"><img src="/Public/images/e_i.png" alt=""></a>'));
 		}
 	}) */
-
-	
-	
-	
-	
 		var vm = new Vue({
 			el:"#vmCnt",
 			data:{
@@ -236,7 +231,8 @@
 				//根据条件查询服务
 				queryServices:function(num){
 					var vm = this;
-					var stid =1;
+					//var stid = [[${param.stid}]][0];
+					var stid = 1;
 					var obj = {};
 					//如果文本框不为空
 					if(jQuery("[name=findkey]").val()!=''){
@@ -299,6 +295,7 @@
 				//点击类别加载对应的子类别
 				queryServiceTypeChild:function(stpid){
 					var vm = this;
+					alert("类别");
 					if(jQuery(".sonType").attr("data-id")!=stpid){
 						jQuery.getJSON("/c/lsm/api/queryServiceTypeChild",{"stpid":stpid},function(data){
 							if(data.length==0){
@@ -318,6 +315,7 @@
 				//点击国家查询城市
 				queryCity:function(areaid){
 					var vm = this;
+					alert("国家");
 					jQuery.getJSON("/c/lsm/api/queryCity",{"areaid":areaid},function(data){
 						if(data.length==0){
 							jQuery("#city").hide();
