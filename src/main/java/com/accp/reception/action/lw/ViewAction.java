@@ -12,5 +12,11 @@ public class ViewAction {
 	public String goToLogin() {
 		return "sjzx-fbfw";//模板文件名
 	}
+	
+	@GetMapping("sjrz")
+	public String sjrz() {
+		return "sjrz-xz";
+		
+	}
 
 }
