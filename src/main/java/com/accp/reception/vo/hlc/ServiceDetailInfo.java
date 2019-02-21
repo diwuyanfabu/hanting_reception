@@ -206,4 +206,12 @@ public class ServiceDetailInfo {
 	public void setUserID(Integer userID) {
 		this.userID = userID;
 	}
+	public ServiceDetailInfo() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+	
+	
+	
+	
 }

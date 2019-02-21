@@ -1,11 +1,13 @@
 package com.accp.reception.action.hlc;
 
+
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,26 +18,21 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
-
 import com.alibaba.fastjson.JSON;
+import com.github.pagehelper.PageInfo;
 import com.accp.reception.biz.hlc.MerchantEnterAndServiceBiz;
-import com.accp.reception.dao.hlc.MerchantEnterAndServiceDao;
 import com.accp.reception.pojo.ComplaintType;
 import com.accp.reception.pojo.LanguageType;
 import com.accp.reception.pojo.MajorType;
 import com.accp.reception.pojo.Post;
 import com.accp.reception.pojo.Resouroe;
-import com.accp.reception.pojo.ServiceCollection;
-import com.accp.reception.pojo.ServiceDes;
 import com.accp.reception.pojo.ServiceType;
 import com.accp.reception.pojo.Servicelevel;
-import com.accp.reception.pojo.Services;
 import com.accp.reception.pojo.ShArea;
 import com.accp.reception.pojo.User;
 import com.accp.reception.util.file.Upload;
 import com.accp.reception.vo.hlc.AdvertisementVO;
 import com.accp.reception.vo.hlc.EsLevelVO;
-import com.accp.reception.vo.hlc.EvaluationserviceVO;
 import com.accp.reception.vo.hlc.HomePostVO;
 import com.accp.reception.vo.hlc.SameServiceVO;
 import com.accp.reception.vo.hlc.SerRecommendVO;
@@ -43,8 +40,7 @@ import com.accp.reception.vo.hlc.SerReserveVO;
 import com.accp.reception.vo.hlc.ServiceDetailInfo;
 import com.accp.reception.vo.hlc.ServiceMerchantInfo;
 import com.accp.reception.vo.hlc.ServiceSelect;
-import com.github.pagehelper.PageHelper;
-import com.github.pagehelper.PageInfo;
+
 
 @Controller
 @RequestMapping("/c/lsm")
@@ -212,6 +208,9 @@ public class MerchantEnterAndServiceAction {
 		//根据一级服务类别获取级别
 		List<Servicelevel> serLevelList = biz.queryServicelevel(stid);
 		model.addAttribute("countryList",countryList);	//将国家存入request
+		for (ShArea shArea : countryList) {
+			System.err.println(shArea);
+		}
 		model.addAttribute("serTypeList",serTypeList);	//将当前一级服务类别的子类别存入request
 		model.addAttribute("serLevelList",serLevelList);//将当前一级服务类别的级别存入request
 		return htmlUrl;

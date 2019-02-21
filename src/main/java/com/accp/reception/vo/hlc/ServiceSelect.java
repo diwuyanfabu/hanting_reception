@@ -100,5 +100,9 @@ public class ServiceSelect {
 	public void setOrderByPrice(Integer orderByPrice) {
 		this.orderByPrice = orderByPrice;
 	}
+	public ServiceSelect() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
 	
 }

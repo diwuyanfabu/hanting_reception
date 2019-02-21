@@ -59,4 +59,24 @@ public class EvaluationserviceVO {
 	public void setServiceAppraiseID(Integer serviceAppraiseID) {
 		this.serviceAppraiseID = serviceAppraiseID;
 	}
+	public EvaluationserviceVO(Integer serviceAppraiseID, Integer userID, String userImgPath, String userName,
+			Integer serviceAppraiseLevel, String serviceAppraiseContent, Date serviceAppraiseDate,
+			EvaluationserviceVO obj) {
+		super();
+		this.serviceAppraiseID = serviceAppraiseID;
+		this.userID = userID;
+		this.userImgPath = userImgPath;
+		this.userName = userName;
+		this.serviceAppraiseLevel = serviceAppraiseLevel;
+		this.serviceAppraiseContent = serviceAppraiseContent;
+		this.serviceAppraiseDate = serviceAppraiseDate;
+		this.obj = obj;
+	}
+	public EvaluationserviceVO() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+	
+	
+	
 }

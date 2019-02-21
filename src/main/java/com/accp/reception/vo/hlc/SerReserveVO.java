@@ -110,5 +110,9 @@ public class SerReserveVO {
 	public void setUploadPath(String uploadPath) {
 		this.uploadPath = uploadPath;
 	}
+	public SerReserveVO() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
 	
 }

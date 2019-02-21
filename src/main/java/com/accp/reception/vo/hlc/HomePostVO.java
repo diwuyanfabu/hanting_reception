@@ -71,4 +71,12 @@ public class HomePostVO {
 	public void setReplyUserTime(String replyUserTime) {
 		this.replyUserTime = replyUserTime;
 	}
+	public HomePostVO() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+	
+	
+	
+	
 }

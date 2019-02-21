@@ -15,4 +15,10 @@ public class ImageWidthAndHeightVO {
 	public void setHeight(Integer height) {
 		this.height = height;
 	}
+	public ImageWidthAndHeightVO() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+	
+	
 }

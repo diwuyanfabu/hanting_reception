@@ -58,4 +58,10 @@ public class ServicesVO {
 	public void setUserID(Integer userID) {
 		this.userID = userID;
 	}
+	public ServicesVO() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+	
+	
 }

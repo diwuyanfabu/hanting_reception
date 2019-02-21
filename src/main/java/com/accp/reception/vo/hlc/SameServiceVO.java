@@ -50,4 +50,11 @@ public class SameServiceVO {
 	public void setShopImg(String shopImg) {
 		this.shopImg = shopImg;
 	}
+	public SameServiceVO() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+	
+	
+	
 }

@@ -79,5 +79,9 @@ public class ServiceMerchantInfo {
 	public void setGuaranteeMoney(Integer guaranteeMoney) {
 		this.guaranteeMoney = guaranteeMoney;
 	}
+	public ServiceMerchantInfo() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
 	
 }

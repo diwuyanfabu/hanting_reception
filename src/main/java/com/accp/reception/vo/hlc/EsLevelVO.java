@@ -36,4 +36,9 @@ public class EsLevelVO {
 	public void setLevel5(Integer level5) {
 		this.level5 = level5;
 	}
+	public EsLevelVO() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+	
 }

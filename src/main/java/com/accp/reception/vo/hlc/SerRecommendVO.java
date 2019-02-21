@@ -43,4 +43,10 @@ public class SerRecommendVO {
 	public void setMerchantLevel(float merchantLevel) {
 		this.merchantLevel = merchantLevel;
 	}
+	public SerRecommendVO() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+	
+	
 }
