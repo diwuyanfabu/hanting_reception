@@ -24,7 +24,7 @@
 						<a href="">yuno</a> <span class="ht_line"></span>
 						<a href="">退出</a>
 						<span class="ht_line"></span>
-						<a href=""><img src="Public/images/e_i.png" alt=""></a>
+						<a href=""><img src="/Public/images/e_i.png" alt=""></a>
 					</div>
 				</div>
 			</div>
@@ -64,12 +64,12 @@
 		</div>
 
 		<div class="b_box pt1" id="vmCnt">
-			<form method="post" id="formreg" target="_blank" action="/c/lsm/merchantEnter" enctype="multipart/form-data" onsubmit="return formValidate()">
+			<form method="post" id="formreg" target="_blank" action="/c/lw/merchantEnter" enctype="multipart/form-data" onsubmit="return formValidate()">
 				<h2 class="index_h2_title in2_h2_title c_10">商家入驻申请资料认证</h2>
 				<dl class="info_form_dl">
 					<dt><span class="c_x">*</span>商家类别</dt>
 					<dd class="sel_business_users">
-						<input type="hidden" name="merchanttype" value="1">
+						<input type="hidden" name="merchantType" value="1">
 						<a href="javascript:void(0);" class="cur">大陆商家用户</a>
 						<a href="javascript:void(0);">海外商家用户</a>
 					</dd>
@@ -79,7 +79,7 @@
 					<dd>
 						<input type="hidden" name="serviceID"/>
 						<div class="sel_sev_style" th:remove="${servicetypeList.size()==0?'none':'all-but-first'}">
-							<a th:each="temp,index : ${servicetypeList}" href="javascript:void(0);" th:text="${temp.stname}" th:attr="data-id=${temp.stid}" >自驾游</a>
+							<a th:each="temp,index : ${servicetypeList}" href="javascript:void(0);" th:text="${temp.stName}" th:attr="data-id=${temp.stid}" >自驾游</a>
 							<a href="javascript:void(0);">微整形</a>
 							<a href="javascript:void(0);">留学中介</a>
 							<a href="javascript:void(0);">韩语翻译</a>
@@ -90,15 +90,15 @@
 				</dl>
 				<dl class="info_form_dl hospital" style="display:none;">
 					<dt><span class="c_x">*</span>医院名称</dt>
-					<dd><input type="text" name="hospitalname" id="hospital" value="" class="input_c inf_inc"></dd>
+					<dd><input type="text" name="hospitalName" id="hospital" value="" class="input_c inf_inc"></dd>
 				</dl>
 				<dl class="info_form_dl">
 					<dt><span class="c_x">*</span>店铺名称</dt>
-					<dd><input type="text" name="shopname" value="" class="input_c inf_inc validate[required]" required=""></dd>
+					<dd><input type="text" name="shopName" value="" class="input_c inf_inc validate[required]" required=""></dd>
 				</dl>
 				<dl class="info_form_dl">
 					<dt><span class="c_x">*</span>真实姓名</dt>
-					<dd><input type="text" name="userrealname" value="" class="input_c inf_inc validate[required]" required=""></dd>
+					<dd><input type="text" name="userRealName" value="" class="input_c inf_inc validate[required]" required=""></dd>
 				</dl>
 				<dl class="info_form_dl">
 					<dt>签名</dt>
@@ -108,7 +108,7 @@
 				</dl>
 				<dl class="info_form_dl">
 					<dt><span class="c_x">*</span>店铺保证金</dt>
-					<dd><span class="shop_margin">500金币</span>
+					<dd><span class="shop_margin">[[${bond}]]金币</span>
 					<span class="c_4" style="display:none;">您的金币余额不足，请先<a href="/zsp/c/getLogisticsById" class="btna_s2 mlr10">充值</a>后再申请</span>
 					</dd>
 				</dl>
@@ -134,18 +134,18 @@
 					<dl class="info_form_dl stype2">
 						<dt><span class="c_x">*</span>登入证姓名</dt>
 						<dd>
-							<input name="identityrealname" type="text" value="" class="input_c inf_inc" id="idname">
+							<input name="identityRealName" type="text" value="" class="input_c inf_inc" id="idname">
 						</dd>
 					</dl>
 
 					<dl class="info_form_dl stype1">
 						<dt><span class="c_x">*</span>身份证</dt>
 						<dd>
-							<select id="identitytype" name="identitytype" class="sel_f sel_f2 sel_b2 mt00">
+							<select id="identitytype" name="identityType" class="sel_f sel_f2 sel_b2 mt00">
 								<option value="1">身份证号码</option>
 								<option value="2">护照号码</option>
 							</select>
-							<input name="identitynumder" type="text" value="" class="input_c inf_inc8" id="idcard1">
+							<input name="identityNumder" type="text" value="" class="input_c inf_inc8" id="idcard1">
 						</dd>
 					</dl>
 					<dl class="info_form_dl">
@@ -153,17 +153,17 @@
 						<dd>
 							<select class="sel_f sel_f2 sel_b2" name="country" id="country" @change="querySharea($event)">
 								<option value="0">请选择</option>
-								<option th:each="temp,iterState : ${shareaList}" th:value="${temp.areaid}" th:text="${temp.mergername}"></option>
+								<option th:each="temp,iterState : ${shareaList}" th:value="${temp.areaID}" th:text="${temp.mergerName}"></option>
 							</select>
-							<select class="sel_f sel_f2 sel_b2" name="provincialid" id="provincialid" @change="querySharea($event)">
+							<select class="sel_f sel_f2 sel_b2" name="provincialID" id="provincialid" @change="querySharea($event)">
 								<option value="0">省</option>
-								<option v-for="(temp,index) in provinceList" :value="temp.areaid" v-text="temp.mergername"></option>
+								<option v-for="(temp,index) in provinceList" :value="temp.areaID" v-text="temp.mergerName"></option>
 							</select>
 							<select class="sel_f sel_f2 sel_b2 validate[required]" name="cityid" id="cityid" required="">
 								<option value="0">市</option>
-								<option v-for="(temp,index) in cityList" :value="temp.areaid" v-text="temp.mergername"></option>
+								<option v-for="(temp,index) in cityList" :value="temp.areaID" v-text="temp.mergerName"></option>
 							</select>
-							<input name="addetail" type="text" value="" class="input_c inf_inc validate[required]" id="addetail" required="">
+							<input name="adDetail" type="text" value="" class="input_c inf_inc validate[required]" id="addetail" required="">
 						</dd>
 					</dl>
 					<dl class="info_form_dl">
@@ -218,7 +218,7 @@
 							<div class="sel_file_d">
 								<a href="javascript:void(0);" class="sel_file_a" id="picbt3" onclick="identityhandimgData.click();">上传图片</a>
 							</div>
-							<div class="sfz_al"><img src="Public/images/sfz_sf.jpg" alt=""></div>
+							<div class="sfz_al"><img src="/Public/images/sfz_sf.jpg" alt=""></div>
 						</dd>
 					</dl>
 				</div>
@@ -229,8 +229,8 @@
 					<dd th:remove="${languagetypeList.size()==0?'none':'all-but-first'}">
 						<span th:each="temp,iterState : ${languagetypeList}" class="mrsp_10">
 							<label>
-								<input type="checkbox" name="langs[]" class="checkbox_input validate[required]" id="langs[]" th:value="${temp.languageid}">
-								<span th:text="${temp.languagename}"></span>
+								<input type="checkbox" name="langs[]" class="checkbox_input validate[required]" id="langs[]" th:value="${temp.languageID}">
+								<span th:text="${temp.languageName}"></span>
 							</label>
 						</span>
 						<span class="mrsp_10">
@@ -246,15 +246,15 @@
 							</label>
 						</span>
 					</dd>
-					<input type="hidden" name="languagenametext"/>
+					<input type="hidden" name="languageNameText"/>
 				</dl>
-				<dl class="info_form_dl" id="majornametext">
+				<dl class="info_form_dl" id="majorNameText">
 					<dt class="mopa">擅长专业</dt>
 					<dd th:remove="${majortypeList.size()==0?'none':'all-but-first'}">
 						<span class="mrsp_10" th:each="temp,iterState : ${majortypeList}">
 							<label>
-								<input type="checkbox" name="majors[]" th:value="${temp.majorid}" class="checkbox_input">
-								<span th:text="${temp.majorname}"></span>
+								<input type="checkbox" name="majors[]" th:value="${temp.majorID}" class="checkbox_input">
+								<span th:text="${temp.majorName}"></span>
 							</label>
 						</span>
 						<span class="mrsp_10">
@@ -270,13 +270,13 @@
 							</label>
 						</span>
 					</dd>
-					<input type="hidden" name="majornametext"/>
+					<input type="hidden" name="majorNameText"/>
 				</dl>
 				<dl class="info_form_dl">
 					<dt>所在城市</dt>
 					<dd>
-						<select name="livecityid" class="sel_f sel_f2 sel_b3" id="cityid" th:remove="${liveCityList.size()==0?'none':'all-but-first'}">
-							<option th:each="temp,iterState : ${liveCityList}" th:value="${temp.areaid}" th:text="${temp.mergername}"></option>
+						<select name="liveCityID" class="sel_f sel_f2 sel_b3" id="cityid" th:remove="${liveCityList.size()==0?'none':'all-but-first'}">
+							<option th:each="temp,iterState : ${liveCityList}" th:value="${temp.areaID}" th:text="${temp.mergerName}"></option>
 							<option value="402">首尔特别市</option>
 						</select>
 					</dd>
@@ -284,13 +284,13 @@
 				<dl class="info_form_dl">
 					<dt>邮箱地址</dt>
 					<dd>
-						<input name="merchantemail" type="email" value="" class="input_c inf_inc validate[custom[email]]" id="email">
+						<input name="merchantEmail" type="email" value="" class="input_c inf_inc validate[custom[email]]" id="email">
 					</dd>
 				</dl>
 				<dl class="info_form_dl">
 					<dt><span class="c_x">*</span>联系电话</dt>
 					<dd>
-						<input name="merchantphone" type="tel" value="" class="input_c inf_inc3 validate[required,custom[number]]" id="tel" required="">
+						<input name="merchantPhone" type="tel" value="" class="input_c inf_inc3 validate[required,custom[number]]" id="tel" required="">
 					</dd>
 				</dl>
 				<dl class="info_form_dl">
@@ -342,13 +342,13 @@
 						<input name="age" type="text" value="" class="input_c inf_inc3 validate[custom[number]]" id="age">
 					</dd>
 				</dl>
-				<!--<dl class="info_form_dl">
+				<dl class="info_form_dl">
 					<dt><span class="c_x">*</span>自我介绍</dt>
 					<dd>
-						<textarea name="selfintroduction" id="content" style="width: 700px; height: 300px; display: none;">
+						<textarea name="selfIntroduction" id="content" style="width: 700px; height: 300px; display: none;">
 						</textarea>
 					</dd>
-				</dl>-->
+				</dl>
 				<div class="business_btn_d busi_rz">
 					<div class="protocol_d">
 						<h2 class="protocol_h2_title">网站文明协议</h2>
@@ -857,7 +857,7 @@
 			<dl class="footer_dl">
 				<dt>
 					<div class="footer_ewm_box">
-						<img src="Public/images/footer_ewm.png" alt="">
+						<img src="/Public/images/footer_ewm.png" alt="">
 					</div>
 					<span class="ft_ewm_name">御品韩汀</span>
 				</dt>
@@ -886,7 +886,7 @@
 			</li>
 			<li>
 				<a href="" class="rn_wx">官方微信</a>
-				<div class="over_show"><img src="Public/images/r_ewm.jpg" alt="" class="gw_ewm"></div>
+				<div class="over_show"><img src="/Public/images/r_ewm.jpg" alt="" class="gw_ewm"></div>
 			</li>
 			<li>
 				<a href="" class="rn_kf">在线客服</a>
@@ -897,11 +897,11 @@
 		</ul>
 		<!--right nav end-->
 	</body>
-	<script type="text/javascript" src="Public/js/jquery-1.8.3.min.js"></script>
-	<script type="text/javascript" src="Public/js/vue.js"></script>
-	<script type="text/javascript" src="Public/js/kindeditor/kindeditor-all-min.js"></script>
-	<script type="text/javascript" src="Public/js/sessionHeader.js"></script>
-	<script type="text/javascript" src="Public/js/headLeftNav.js"></script>
+	<script type="text/javascript" src="/Public/js/jquery-1.8.3.min.js"></script>
+	<script type="text/javascript" src="/Public/js/vue.js"></script>
+	<script type="text/javascript" src="/Public/js/kindeditor/kindeditor-all-min.js"></script>
+	<script type="text/javascript" src="/Public/js/sessionHeader.js"></script>
+	<script type="text/javascript" src="/Public/js/headLeftNav.js"></script>
 	<script inline="javascript">
 		var vm = new Vue({
 			el : "#vmCnt",
@@ -912,7 +912,7 @@
 			},
 			created:function(){
 				var vm = this;
-				if([[${userMoney}]]<500){
+				if([[${userMoney}]]<[[${bond}]]){
 					vm.flag=false;
 					jQuery("span.c_4").show();
 					jQuery(".business_btn_d.busi_rz .btn_jy_a").text("您的金币余额不足，请先充值后再申请");
@@ -930,7 +930,7 @@
 					}else if(pid==0&&name=="provincialid"){
 						vm.cityList = {};
 					}else{
-						jQuery.getJSON("/c/lsm/api/querySharea",{"pid":pid},function(data){
+						jQuery.getJSON("/c/lw/api/querySharea",{"pid":pid},function(data){
 							if(name=="country"){
 								vm.provinceList = data;
 								vm.cityList = {};
@@ -968,7 +968,7 @@
 		KindEditor.ready(function(k){
 		    editor = k.create('#content',{
 		        resizeType: 0,
-		        cssPath : ['/js/kindeditor/plugins/code/prettify.css'],
+		        cssPath : ['/Public/js/kindeditor/plugins/code/prettify.css'],
 		        filterMode: true,
 		        allowFileManager: true,
 		        uploadJson: '/c/sxy/kindeditor/upload',
@@ -985,7 +985,7 @@
 				jQuery(this).removeAttr("class");
 				jQuery("[name=serviceID]").val(jQuery("[name=serviceID]").val().replace(jQuery(this).attr("data-id"),"").replace(",",""));
 				if(jQuery(this).text()=="微整形"){
-					jQuery("[name=hospitalname]").val("");
+					jQuery("[name=hospitalName]").val("");
 					jQuery(".info_form_dl.hospital").hide();
 				}
 			}else if(jQuery(".sel_sev_style a.cur").length!=2){
@@ -1004,19 +1004,19 @@
 		jQuery(".sel_business_users a").click(function(){
 			jQuery(this).attr("class","cur").siblings().removeAttr("class");
 			if(jQuery(this).text()=="大陆商家用户"){
-				jQuery("[name=merchanttype]").val(1);
+				jQuery("[name=merchantType]").val(1);
 				jQuery(".info_form_dl.stype2").hide();
 				jQuery(".info_form_dl.stype1").show();
-				jQuery("#idcard1").attr("name","identitynumder");
+				jQuery("#idcard1").attr("name","identityNumder");
 				jQuery("#idcard2").removeAttr("name");
-				jQuery("[name=identityrealname]").val("");
-				jQuery("#identitytype").attr("name","identitytype");
+				jQuery("[name=identityRealName]").val("");
+				jQuery("#identitytype").attr("name","identityType");
 				jQuery("span.stype2").hide().siblings("span").css("display","inline");
 			}else{
-				jQuery("[name=merchanttype]").val(2);
+				jQuery("[name=merchantType]").val(2);
 				jQuery(".info_form_dl.stype2").show();
 				jQuery(".info_form_dl.stype1").hide();
-				jQuery("#idcard2").attr("name","identitynumder");
+				jQuery("#idcard2").attr("name","identityNumder");
 				jQuery("#idcard1").removeAttr("name");
 				jQuery("#identitytype").removeAttr("name");
 				jQuery("span.stype2").css("display","inline").siblings("span").hide();
@@ -1054,11 +1054,10 @@
 			var hzFlag = /^\d{8}$/;
 			var phoneFlag = /^1[3,4,5,7,8]\d{9}$/;
 			var emailFlag = /^[A-Za-z\d]+([-_.][A-Za-z\d]+)*@([A-Za-z\d]+[-.])+[A-Za-z\d]{2,4}$/;
-
 			//获取自我介绍内容
 			var selfintroduction = $(".ke-edit-iframe").contents().find(".ke-content").html();
 			//将内容赋值给textarea标签
-			jQuery("[name=selfintroduction]").text(selfintroduction);
+			jQuery("[name=selfIntroduction]").text(selfintroduction);
 			if(!vm.flag){
 				return false;
 			}
@@ -1068,19 +1067,19 @@
 			}else if(jQuery(".info_form_dl.hospital").css("display")=="block"&&jQuery("[name=hospitalname]").val()==""){
 				alert("请填写医院名称！");
 				return false;
-			}else if(jQuery("[name=shopname]").val()==""){
+			}else if(jQuery("[name=shopName]").val()==""){
 				alert("请填写店铺名称！");
 				return false;
-			}else if(jQuery("[name=userrealname]").val()==""){
+			}else if(jQuery("[name=userRealName]").val()==""){
 				alert("请填写真实姓名！");
 				return false;
 			}else if(jQuery("[name=shopimgData]").val()==""){
 				alert("请上传商家店铺图片！");
 				return false;
-			}else if(jQuery("[name=merchanttype]").val()==1&&jQuery("[name=identitytype]").val()==1&&jQuery("[name=identitynumder]").val()==""){
+			}else if(jQuery("[name=merchantType]").val()==1&&jQuery("[name=identitytype]").val()==1&&jQuery("[name=identitynumder]").val()==""){
 				alert("请填写身份证号码！");
 				return false;
-			}else if(jQuery("[name=merchanttype]").val()==1&&jQuery("[name=identitytype]").val()==2&&jQuery("[name=identitynumder]").val()==""){
+			}else if(jQuery("[name=merchantType]").val()==1&&jQuery("[name=identitytype]").val()==2&&jQuery("[name=identitynumder]").val()==""){
 				alert("请填写护照号码！");
 				return false;
 			}
@@ -1113,16 +1112,17 @@
 			}else if(jQuery("#languagenametext dd .mrsp_10 input:checked").length==0){
 				alert("请选择服务语言！");
 				return false;
-			}else if(jQuery("[name=merchantemail]").val()!=''&&!emailFlag.test(jQuery("[name=merchantemail]").val())){
+			}else if(jQuery("[name=merchantEmail]").val()!=''&&!emailFlag.test(jQuery("[name=merchantEmail]").val())){
 				alert("请输入正确的邮箱！");
 				return false;
-			}else if(jQuery("[name=merchantphone]").val()==""){
+			}else if(jQuery("[name=merchantPhone]").val()==""){
 				alert("请填写联系电话！");
 				return false;
-			}else if(!phoneFlag.test(jQuery("[name=merchantphone]").val())){
+			}else if(!phoneFlag.test(jQuery("[name=merchantPhone]").val())){
 				alert("请填写正确的中国电信、联通、移动的手机号码！");
 				return false;
-			}else if(jQuery("[name=selfintroduction]").text()==""){
+			}else if(jQuery("[name=selfIntroduction]").text()==""){
+				alert($("[name=selfintroduction]").text())
 				alert("请填写自我介绍！");
 				return false;
 			}else{
@@ -1133,22 +1133,22 @@
 					jQuery("#provincialid").attr("name","cityid");
 					jQuery("#cityid").attr("name","countyid");
 				}
-				jQuery("[name=languagenametext]").val("");	//清空服务语言隐藏域值
-				jQuery("[name=majornametext]").val("");	//清空擅长专业隐藏域值
+				jQuery("[name=languageNameText]").val("");	//清空服务语言隐藏域值
+				jQuery("[name=majorNameText]").val("");	//清空擅长专业隐藏域值
 				//循环服务语言多选框集合赋值到隐藏input的val中
 				jQuery("#languagenametext dd .mrsp_10 input:checked").each(function(e,obj){
-					if(jQuery("[name=languagenametext]").val()==""){
-						jQuery("[name=languagenametext]").val(jQuery(obj).next().text());
+					if(jQuery("[name=languageNameText]").val()==""){
+						jQuery("[name=languageNameText]").val(jQuery(obj).next().text());
 					}else{
-						jQuery("[name=languagenametext]").val(jQuery("[name=languagenametext]").val()+" "+jQuery(obj).next().text());
+						jQuery("[name=languageNameText]").val(jQuery("[name=languageNameText]").val()+" "+jQuery(obj).next().text());
 					}
 				});
 				//循环擅长专业多选框集合赋值到隐藏input的val中
-				jQuery("#majornametext dd .mrsp_10 input:checked").each(function(e,obj){
-					if(jQuery("[name=majornametext]").val()==""){
-						jQuery("[name=majornametext]").val(jQuery(obj).next().text());
+				jQuery("#majorNameText dd .mrsp_10 input:checked").each(function(e,obj){
+					if(jQuery("[name=majorNameText]").val()==""){
+						jQuery("[name=majorNameText]").val(jQuery(obj).next().text());
 					}else{
-						jQuery("[name=majornametext]").val(jQuery("[name=majornametext]").val()+" "+jQuery(obj).next().text());
+						jQuery("[name=majorNameText]").val(jQuery("[name=majorNameText]").val()+" "+jQuery(obj).next().text());
 					}
 				});
 				return true;

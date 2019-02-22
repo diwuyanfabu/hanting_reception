@@ -11,6 +11,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.accp.reception.biz.lw.ServicesBiz;
@@ -21,6 +22,8 @@ import com.accp.reception.pojo.Services;
 import com.accp.reception.pojo.ShArea;
 import com.accp.reception.pojo.User;
 import com.accp.reception.util.file.Upload;
+import com.accp.reception.vo.lw.ServicesVo;
+import com.github.pagehelper.PageInfo;
 
 
 
@@ -116,7 +119,7 @@ public class ServicesAcion {
 				service.setUploadDataUrl(uploaddataurl);
 				System.out.println(service);
 				biz.addservices(service);
-				return "redirect:/zg/c/getServices?pageNum=1&pageSize=3";
+				return "redirect:/c/lw/getServices?pageNum=1&pageSize=3";
 	}
 	/**
 	 * 
@@ -146,5 +149,87 @@ public class ServicesAcion {
 		return "sjrz-txzl";
 	}
 	
+	/**
+	 * 
+	* @title: querySharea 
+	* @description: 查询地址api
+	* @param pid
+	* @return
+	 */
+	@GetMapping("api/querySharea")
+	@ResponseBody
+	public List<ShArea> querySharea(Integer pid){
+		return biz.querySharea(pid,false);
+	}
+	
+	/**
+	 * 
+	* @title: merchantMove 
+	* @description: 商家入驻
+	* @param session
+	* @param user
+	* @param serviceID
+	* @param shopimgData
+	* @param identitypositiveimgData
+	* @param identitynegativeimgData
+	* @param identityhandimgData
+	* @return
+	 */
+	@PostMapping("merchantEnter")
+	public String merchantMove(HttpSession session,User user,String serviceID,MultipartFile shopimgData,MultipartFile identitypositiveimgData,MultipartFile identitynegativeimgData,MultipartFile identityhandimgData) {
+//		User loginUser = (User)session.getAttribute("USER");	//登录用户
+		User loginUser = biz.UserID(25);
+		float bond = biz.queryBond();	//入驻缴纳保证金金额要求
+		if(loginUser.getUserMoney()>=bond) {	//如果当前登录用户的金额足够缴纳保证金
+			if(serviceID.split(",").length==2) {	//如果用户选择的服务类别为两个
+				user.setFirstServiceID(Integer.parseInt(serviceID.split(",")[0]));
+				user.setSecondServiceID(Integer.parseInt(serviceID.split(",")[1]));	
+			}else {
+				user.setFirstServiceID(Integer.parseInt(serviceID));
+			}
+			try {
+				String shopimgDataFName = Upload.uploadFile(shopimgData);
+				String identitypositiveimgDataFName = Upload.uploadFile(identitypositiveimgData);
+				String identitynegativeimgDataFName = Upload.uploadFile(identitynegativeimgData);
+				String identityhandimgDataFName = Upload.uploadFile(identityhandimgData);
+				user.setShopImg(shopimgDataFName);	//设置数据库存储图片路径
+				user.setIdentityPositiveImg(identitypositiveimgDataFName);
+				user.setIdentityNegativeImg(identitynegativeimgDataFName);
+				user.setIdentityHandImg(identityhandimgDataFName);
+				user.setUserID(loginUser.getUserID());//当前登录用户编号赋给修改对象
+			} catch (IllegalStateException | IOException e) {
+				// TODO 自动生成的 catch 块
+				e.printStackTrace();
+			}
+			System.out.println(user+"---呼哈---"+bond);
+			System.out.println(loginUser.getUserID());
+			if(biz.merchantMove(user,bond)>0) {//商家入驻受影响行数
+				biz.saveGoldNotes(loginUser.getUserID(), 4, "商家入驻缴纳保证金",-bond , 2);	//添加金币流向记录
+				biz.saveXtxx(loginUser.getUserID(), "您好，您已成功提交商家入驻的申请，请等待管理员审核。");
+				return "redirect:/sjrz-shzl.html";
+			}else {
+				return "redirect:/Public/error/500.html";
+			}
+		}else {
+			return "redirect:/Public/error/500.html";
+		}
+	}
+	/**
+	 * 
+	* @title: queryService 
+	* @description: 查询我发布的服务
+	* @param session
+	* @param model
+	* @param pageNum
+	* @param pageSize
+	* @return
+	 */
+	@GetMapping("getServices")
+	public String  queryService(HttpSession session,Model model,Integer pageNum,Integer pageSize) {
+		User loginUser = biz.UserID(25);
+		PageInfo<ServicesVo> pageInfo=biz.queryServices(pageNum, pageSize,loginUser.getUserID());
+		model.addAttribute("PAGE_INFO", pageInfo);
+		return "sjzx-services";
+	}
 	
 }

@@ -64,6 +64,126 @@
 		SELECT bond FROM `system` LIMIT 1
 	</select>
 	
+	<select id="queryUser" resultType="User">
+		<include refid="selectAll"/>
+		user where userID=#{userID}
+	</select>
+	
+	<!-- 商家入驻 -->
+	<update id="merchantMove">
+		UPDATE `user`
+		<set>
+			<if test="obj.merchantType!=null and obj.merchantType!=''">
+				`merchanttype` = #{obj.merchantType},
+			</if>
+			<if test="obj.firstServiceID!=null and obj.firstServiceID!=''">
+				`firstserviceid` = #{obj.firstServiceID},`firstServiceMoney` = 0,
+			</if>
+			<if test="obj.secondServiceID!=null and obj.secondServiceID!=''">
+				`secondserviceid` = #{obj.secondServiceID},`secondServiceMoney` = 0,
+			</if>
+			<if test="obj.hospitalName!=null and obj.hospitalName!=''">
+				`hospitalname` = #{obj.hospitalName},
+			</if>
+			<if test="obj.shopName!=null and obj.shopName!=''">
+				`shopName` = #{obj.shopName},
+			</if>
+			<if test="obj.userRealName!=null and obj.userRealName!=''">
+				`userrealname` = #{obj.userRealName},
+			</if>
+			<if test="obj.signature!=null and obj.signature!=''">
+				`signature` = #{obj.signature},
+			</if>
+			<if test="obj.shopImg!=null and obj.shopImg!=''">
+				`shopimg` = #{obj.shopImg},
+			</if>
+			<if test="obj.identityType!=null and obj.identityType!=''">
+				`identitytype` = #{obj.identityType},
+			</if>
+			<if test="obj.identityNumder!=null and obj.identityNumder!=''">
+				`identitynumder` = #{obj.identityNumder},
+			</if>
+			<if test="obj.identityRealName!=null and obj.identityRealName!=''">
+				`identityrealname` = #{obj.identityRealName},
+			</if>
+			<if test="obj.country!=null and obj.country!=''">
+				`country` = #{obj.country},
+			</if>
+			<if test="obj.provincialID!=null and obj.provincialID!=''">
+				`provincialid` = #{obj.provincialID},
+			</if>
+			<if test="obj.cityID!=null and obj.cityID!=''">
+				`cityid` = #{obj.cityID},
+			</if>
+			<if test="obj.countyID!=null and obj.countyID!=''">
+				`countyid` = #{obj.countyID},
+			</if>
+			<if test="obj.adDetail!=null and obj.adDetail!=''">
+				`addetail` = #{obj.adDetail},
+			</if>
+			<if test="obj.identityPositiveImg!=null and obj.identityPositiveImg!=''">
+				`identitypositiveimg` = #{obj.identityPositiveImg},
+			</if>
+			<if test="obj.identityPositiveImg!=null and obj.identityPositiveImg!=''">
+				`identitynegativeimg` = #{obj.identityPositiveImg},
+			</if>
+			<if test="obj.identityHandImg!=null and obj.identityHandImg!=''">
+				`identityhandimg` = #{obj.identityHandImg},
+			</if>
+			<if test="obj.languageNameText!=null and obj.languageNameText!=''">
+				`languagenametext` = #{obj.languageNameText},
+			</if>
+			<if test="obj.majorNameText!=null and obj.majorNameText!=''">
+				`majornametext` = #{obj.majorNameText},
+			</if>
+			<if test="obj.liveCityID!=null and obj.liveCityID!=''">
+				`livecityid` = #{obj.liveCityID},
+			</if>
+			<if test="obj.merchantEmail!=null and obj.merchantEmail!=''">
+				`merchantemail` = #{obj.merchantEmail},
+			</if>
+			<if test="obj.merchantPhone!=null and obj.merchantPhone!=''">
+				`merchantphone` = #{obj.merchantPhone},
+			</if>
+			<if test="obj.qq!=null and obj.qq!=''">
+				`qq` = #{obj.qq},
+			</if>
+			<if test="obj.weChat!=null and obj.weChat!=''">
+				`wechat` = #{obj.weChat},
+			</if>
+			<if test="obj.profession!=null and obj.profession!=''">
+				`profession` = #{obj.profession},
+			</if>
+			<if test="obj.height!=null and obj.height!=''">
+				`height` = #{obj.height},
+			</if>
+			<if test="obj.constellation!=null and obj.constellation!=''">
+				`constellation` = #{obj.constellation},
+			</if>
+			<if test="obj.age!=null and obj.age!=''">
+				`age` = #{obj.age},
+			</if>
+			<if test="obj.selfIntroduction!=null and obj.selfIntroduction!=''">
+				`selfintroduction` = #{obj.selfIntroduction},
+			</if>
+			`userMoney` = `userMoney` - #{bond},`guaranteeMoney` = #{bond},`auditStatus` = 1,`merchantLevel` = 0,
+		</set>
+		<where>
+			`userID` = #{obj.userID}
+		</where>
+	</update>
+	
+	<!-- 添加金币流向记录 -->
+	<insert id="saveGoldNotes">
+		INSERT INTO `goldnotes`(`userID`,`acquisitionMode`,`recordDate`,`recordDescribe`,`recordInAndOut`,`auditStatus`)
+		VALUES(#{userID},#{acquisitionMode},NOW(),#{recordDescribe},#{recordInAndOut},#{auditStatus})
+	</insert>
+	
+	<insert id="saveXtxx">
+		INSERT INTO `news`(`addRessee`,`content`,`sendingTime`,`readState`,`newsType`)
+		VALUES(#{userid},#{content},NOW(),0,1)
+	</insert>
+	
 	  <!-- 发布服务-->
     	<insert id="addservies">
     		INSERT INTO `services` (`stid`, `userID`, `resourceID`,`serviceTitle`, `serviceFuTitle`,`downloadTitle`,`servicePrice`,
@@ -79,5 +199,48 @@
 		  #{services.schoolRegion},#{services.schoolNameByCN},#{services.majoyNameByCN},#{services.schoolNameByROK},#{services.majoyNameByROK},#{services.goodAtMajoy},
 		  #{services.hospitalName},#{services.serviceHour},#{services.uploadDataUrl},NOW(),#{services.browseNumber},#{services.weight},#{services.recommendBool},#{services.adminOpinion},2);
     	</insert>
+    	
+    	<!--  查询我发布的服务 -->
+    	<!-- <resultMap  id="ServicesMap"  type="com.accp.vo.zg.ServicesVo">
+		<result column="serviceID" property="serviceid" />
+		<result  column="stid" property="stid"/>
+		<result column="userID" property="userid" />
+		<result column="stName" property="stname" />
+		<result column="serviceCoverImg" property="servicecoverimg" />
+		<result column="serviceImgUrlOne" property="serviceimgurlone" />
+		<result column="serviceImgUrlTwo" property="serviceimgurltwo" />
+		<result column="serviceImgUrlThree" property="serviceimgurlthree" />
+		<result column="serviceImgUrlFour" property="serviceimgurlfour" />
+		<result column="serviceTitle" property="servicetitle" />
+		<result column="serviceFuTitle" property="servicefutitle" />
+		<result column="serviceStartDate" property="servicestartdate" />
+		<result column="serviceEndDate" property="serviceenddate" />
+		<result column="servicePrice" property="serviceprice" />
+		<result column="servicecity" property="servicecity" />
+		<result column="serviceIntro" property="serviceintro" />
+		<result column="name" property="name" />
+		<result column="serviceCostTypeID" property="servicecosttypeid" />
+		<result column="serviceCostInclude" property="servicecostinclude" />
+		<result column="number" property="number" />
+		<result column="uploadtitle" property="uploadtitle" />
+		<result column="uploadDataUrl" property="uploaddataurl" />
+		<result column="releaseTime" property="releasetime" />
+		<result column="auditStatus" property="auditstatus" />
+		</resultMap>
+		<select  id="queryServiceByTitle" resultMap="ServicesMap"  >
+						SELECT * ,(SELECT COUNT(*) FROM orders AS o WHERE s.`serviceID`=o.`serviceID` ) AS `count` FROM `services` AS s 
+					LEFT JOIN sharea AS ea  
+					ON s.`country`=ea.`areaID`
+
+			<where>	
+			<if test="userid!=null">
+				and s.userID=#{userid}
+			</if>
+			<if test="serviceTitle!=null">
+				and s.serviceTitle like '${serviceTitle}%'
+			</if>
+		</where>
+		</select> -->
+    	
 			
 </mapper>
