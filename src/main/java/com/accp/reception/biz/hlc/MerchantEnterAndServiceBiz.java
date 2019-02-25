@@ -105,7 +105,7 @@ public class MerchantEnterAndServiceBiz {
 	 * @param pid 地址编号
 	 * @return
 	 */
-	public List<ShArea> querySharea(Integer pid,boolean flag){
+	public List<ShArea> querySharea(Integer pid,boolean  flag){
 		return dao.querySharea(pid,flag);
 	}
 	/**
