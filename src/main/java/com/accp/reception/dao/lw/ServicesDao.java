@@ -7,6 +7,7 @@ import com.accp.reception.pojo.ServiceType;
 import com.accp.reception.pojo.Services;
 import com.accp.reception.pojo.ShArea;
 import com.accp.reception.pojo.User;
+import com.accp.reception.vo.lw.ServicesVo;
 
 import java.util.List;
 
@@ -76,5 +77,48 @@ public interface ServicesDao {
 	* @param userID
 	* @return
 	 */
-	public User queryUser(Integer userID);
+	public User queryUser(@Param("userID") Integer userID);
+	
+	/**
+	 * 
+	* @title: merchantMove 
+	* @description: 商家入驻
+	* @param user
+	* @param bond
+	* @return
+	 */
+	public int merchantMove(@Param("obj")User user,@Param("bond")float bond);
+	
+	/**
+	 * 
+	* @title: saveGoldNotes 
+	* @description: 新增金币流向记录
+	* @param userID
+	* @param acquisitionMode
+	* @param recordDescribe
+	* @param recordInAndOut
+	* @param auditStatus
+	* @return
+	 */
+	public int saveGoldNotes(@Param("userID")Integer userID,@Param("acquisitionMode")Integer acquisitionMode,@Param("recordDescribe")String recordDescribe,@Param("recordInAndOut")float recordInAndOut,@Param("auditStatus")Integer auditStatus);
+	
+	/**
+	 * 
+	* @title: saveXtxx 
+	* @description: 新增系统信息
+	* @param userID
+	* @param content
+	* @return
+	 */
+	public int saveXtxx(@Param("userid")Integer userID,@Param("content")String content);
+	
+	/**
+	 * 
+	* @title: queryServiceByTitle 
+	* @description: 查询我的发布服务
+	* @param serviceTitle
+	* @param userid
+	* @return
+	 */
+	public List<ServicesVo> queryServiceByTitle(@Param("serviceTitle") String serviceTitle,@Param("userid")Integer userid);
 }

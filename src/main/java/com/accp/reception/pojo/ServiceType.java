@@ -96,7 +96,10 @@ public class ServiceType {
 		}
 		public ServiceType() {
 			super();
+//<<<<<<< HEAD
 			// TODO Auto-generated constructor stub
+//=======
+//>>>>>>> branch 'master' of https://github.com/diwuyanfabu/hanting_reception.git
 		}
 		
 		

@@ -570,6 +570,7 @@ public class User {
 				+ ", registerIP=" + registerIP + ", lastEntry=" + lastEntry + ", userRegistrationTime="
 				+ userRegistrationTime + ", recentEntry=" + recentEntry + "]";
 	}
+//<<<<<<< HEAD
 	
 	
 	
@@ -587,6 +588,8 @@ public class User {
 	
 	
 	
+//=======
+//>>>>>>> branch 'master' of https://github.com/diwuyanfabu/hanting_reception.git
 	
 	
 	
