@@ -41,6 +41,19 @@ public class MerchantEnterAndServiceBiz {
 	@Autowired
 	private MerchantEnterAndServiceDao dao;
 	
+	
+	/**
+	 * 查询当前用户
+	 * @param userID
+	 * @return
+	 */
+	public User queryUser(Integer userID){
+		return dao.queryUser(userID);
+	}
+	
+	
+	
+	
 	/**
 	 * 商家入驻
 	 * @return
@@ -53,7 +66,7 @@ public class MerchantEnterAndServiceBiz {
 	 * 根据服务列表条件查询服务
 	 * @return
 	 */
-	public PageInfo queryServices(ServiceSelect obj,int num,int size){
+	public PageInfo<SerReserveVO> queryServices(ServiceSelect obj,int num,int size){
 		PageHelper.startPage(num, size);
 		return new PageInfo(dao.queryServices(obj));
 	}

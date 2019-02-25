@@ -40,5 +40,11 @@ public class EsLevelVO {
 		super();
 		// TODO Auto-generated constructor stub
 	}
+	@Override
+	public String toString() {
+		return "EsLevelVO [level1=" + level1 + ", level2=" + level2 + ", level3=" + level3 + ", level4=" + level4
+				+ ", level5=" + level5 + "]";
+	}
+	
 	
 }

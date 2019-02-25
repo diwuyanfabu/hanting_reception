@@ -49,6 +49,11 @@ public class Servicelevel {
 			super();
 			// TODO Auto-generated constructor stub
 		}
+		@Override
+		public String toString() {
+			return "Servicelevel [serlevelID=" + serlevelID + ", serlevelName=" + serlevelName + ", stid=" + stid
+					+ ", serviceIntegralMin=" + serviceIntegralMin + ", serviceIntegralMax=" + serviceIntegralMax + "]";
+		}
 		
 		
 }

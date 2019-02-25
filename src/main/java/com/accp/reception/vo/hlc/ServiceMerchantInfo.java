@@ -83,5 +83,15 @@ public class ServiceMerchantInfo {
 		super();
 		// TODO Auto-generated constructor stub
 	}
+	@Override
+	public String toString() {
+		return "ServiceMerchantInfo [userID=" + userID + ", shopImg=" + shopImg + ", shopName=" + shopName
+				+ ", merchantLevel=" + merchantLevel + ", firstServiceLevelName=" + firstServiceLevelName
+				+ ", SecondServiceLevelName=" + SecondServiceLevelName + ", orderCount=" + orderCount
+				+ ", collectCount=" + collectCount + ", liveCityName=" + liveCityName + ", languageNameText="
+				+ languageNameText + ", guaranteeMoney=" + guaranteeMoney + "]";
+	}
+	
+	
 	
 }

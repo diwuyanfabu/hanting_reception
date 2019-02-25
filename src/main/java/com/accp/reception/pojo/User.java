@@ -543,6 +543,35 @@ public class User {
 		super();
 		// TODO Auto-generated constructor stub
 	}
+	@Override
+	public String toString() {
+		return "User [userID=" + userID + ", userImgPath=" + userImgPath + ", userName=" + userName + ", userRealName="
+				+ userRealName + ", userSex=" + userSex + ", userPhone=" + userPhone + ", contactMailbox="
+				+ contactMailbox + ", userMoney=" + userMoney + ", userIntegral=" + userIntegral + ", country="
+				+ country + ", provincialID=" + provincialID + ", cityID=" + cityID + ", countyID=" + countyID
+				+ ", adDetail=" + adDetail + ", merchantType=" + merchantType + ", merchantRegistrationTime="
+				+ merchantRegistrationTime + ", firstServiceID=" + firstServiceID + ", secondServiceID="
+				+ secondServiceID + ", firstServiceMoney=" + firstServiceMoney + ", secondServiceMoney="
+				+ secondServiceMoney + ", hospitalName=" + hospitalName + ", shopName=" + shopName + ", signature="
+				+ signature + ", guaranteeMoney=" + guaranteeMoney + ", shopImg=" + shopImg + ", identityType="
+				+ identityType + ", identityNumder=" + identityNumder + ", identityRealName=" + identityRealName
+				+ ", identityPositiveImg=" + identityPositiveImg + ", identityNegativeImg=" + identityNegativeImg
+				+ ", identityHandImg=" + identityHandImg + ", languageNameText=" + languageNameText + ", majorNameText="
+				+ majorNameText + ", liveCityID=" + liveCityID + ", merchantEmail=" + merchantEmail + ", merchantPhone="
+				+ merchantPhone + ", merchantLevel=" + merchantLevel + ", merchantExp=" + merchantExp + ", qq=" + qq
+				+ ", weChat=" + weChat + ", profession=" + profession + ", height=" + height + ", constellation="
+				+ constellation + ", age=" + age + ", selfIntroduction=" + selfIntroduction + ", collectCount="
+				+ collectCount + ", orderCount=" + orderCount + ", browseNumber=" + browseNumber + ", trusteeship="
+				+ trusteeship + ", trusteeshipStartTime=" + trusteeshipStartTime + ", trusteeshipMonth="
+				+ trusteeshipMonth + ", businessState=" + businessState + ", experience=" + experience
+				+ ", experienceStatus=" + experienceStatus + ", auditStatus=" + auditStatus + ", reason=" + reason
+				+ ", authentication=" + authentication + ", authenticationer=" + authenticationer + ", creditScore="
+				+ creditScore + ", stateboolean=" + stateboolean + ", mailboxVerification=" + mailboxVerification
+				+ ", registerIP=" + registerIP + ", lastEntry=" + lastEntry + ", userRegistrationTime="
+				+ userRegistrationTime + ", recentEntry=" + recentEntry + "]";
+	}
+	
+	
 	
 	
 	

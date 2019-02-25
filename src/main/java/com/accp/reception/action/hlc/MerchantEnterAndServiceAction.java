@@ -20,6 +20,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import com.alibaba.fastjson.JSON;
 import com.github.pagehelper.PageInfo;
+
+import ch.qos.logback.core.net.SyslogOutputStream;
+
 import com.accp.reception.biz.hlc.MerchantEnterAndServiceBiz;
 import com.accp.reception.pojo.ComplaintType;
 import com.accp.reception.pojo.LanguageType;
@@ -51,24 +54,38 @@ public class MerchantEnterAndServiceAction {
 	/*@Autowired
 	private UserBiz szyUserBiz;*/
 	
-/*	*//**
+	
+	/**
 	 * 获取当前用户session
 	 * @param session
 	 * @return
-	 *//*
+	 *
+	 **/
 	@RequestMapping(value="/user/queryAUser")
 	@ResponseBody
 	public User queryAUser(HttpSession session) {
-		if(session.getAttribute("USER")==null) {
+		
+		/*User user = new User();
+		user.setUserID(23);
+		user.setUserName("何林聪");
+		user.setUserRealName("hlinc");
+		*/
+		
+		
+		/*if(session.getAttribute("USER")==null) {
 			return null;
 		}else {
-			Integer userID=((User)session.getAttribute("USER")).getUserid();
-			User u=biz.queryUser(userID);
-			session.setAttribute("USER", u);
-			return u;
+			User user=((User)session.getAttribute("USER"));
+		}*/
+		User u=biz.queryUser(24);
+		if(u==null) {
+			return null;
+		}else {
+		//System.err.println(u.toString());
+		session.setAttribute("USER", u);
+		return u;
 		}
-	}*/
-	
+	}
 	
 	
 	
@@ -172,25 +189,32 @@ public class MerchantEnterAndServiceAction {
 	 */
 	@GetMapping("serviceDetailUrl")
 	public String serviceDetailUrl(Model model,String htmlUrl,Integer sid,Integer uid) {
+	//	System.err.println(htmlUrl+","+sid+","+uid);
 		//查询发布服务的商家信息
 		ServiceMerchantInfo serMerchantObj = biz.queryServiceMerchantInfo(uid,sid);
+	//	System.err.println(uid+","+sid);
 		//查询服务信息
 		ServiceDetailInfo serDetailObj = biz.queryServiceDetailInfo(sid);
-		serDetailObj.setSerDesList(biz.queryServiceDes(sid));
+		serDetailObj.setSerDesList(biz.queryServiceDes(sid));//Servicedes 服务信息
 		//服务评价星级人数查询
 		EsLevelVO esLObj = biz.queryEsLevelVO(sid);
+		//System.err.println(esLObj);
 		//同城服务查询
 		List<SameServiceVO> sameserList = biz.querySameServiceVO(sid);
 		//举报原因查询
-		List<ComplaintType> complainttypeList = biz.queryComplainttype();
+		List<ComplaintType> complainttypeList = biz.queryComplainttype();//Complainttype 举报原因
 		//更新浏览数
 		biz.updateServiceBrowseNumber(sid);
 		//广告查询：未完成
-		model.addAttribute("serMerchantObj",serMerchantObj);
-		model.addAttribute("serDetailObj",serDetailObj);
-		model.addAttribute("esLObj",esLObj);
-		model.addAttribute("sameserList",sameserList);
-		model.addAttribute("complainttypeList",complainttypeList);
+		model.addAttribute("serMerchantObj",serMerchantObj);//ServiceMerchantInfo  查询发布服务的商家信息
+		model.addAttribute("serDetailObj",serDetailObj);//ServiceDetailInfo 服务信息
+		model.addAttribute("esLObj",esLObj);		//服务评价星级人数查询
+		model.addAttribute("sameserList",sameserList);//同城服务查询
+	//	System.out.println(sameserList.size());
+		for (SameServiceVO temp : sameserList) {
+			//System.out.println(temp);
+		}
+		model.addAttribute("complainttypeList",complainttypeList);//Complainttype 举报原因
 		return htmlUrl;
 	}
 	/**
@@ -208,11 +232,11 @@ public class MerchantEnterAndServiceAction {
 		//根据一级服务类别获取级别
 		List<Servicelevel> serLevelList = biz.queryServicelevel(stid);
 		model.addAttribute("countryList",countryList);	//将国家存入request
-		for (ShArea shArea : countryList) {
-			System.err.println(shArea);
-		}
 		model.addAttribute("serTypeList",serTypeList);	//将当前一级服务类别的子类别存入request
 		model.addAttribute("serLevelList",serLevelList);//将当前一级服务类别的级别存入request
+		for (Servicelevel shArea : serLevelList) {
+			//System.err.println(shArea);
+		}
 		return htmlUrl;
 	}
 
@@ -222,7 +246,7 @@ public class MerchantEnterAndServiceAction {
 	 */
 	@GetMapping("api/queryServices")
 	@ResponseBody
-	public PageInfo queryServices(String objJSON,int num,int size){
+	public PageInfo<SerReserveVO> queryServices(String objJSON,int num,int size){
 		ServiceSelect obj = JSON.parseObject(objJSON,ServiceSelect.class);
 		//开始时间
 		String startDate= obj.getStartDate();
@@ -232,6 +256,7 @@ public class MerchantEnterAndServiceAction {
 		endDate = endDate!=null&&endDate!=""?endDate+" 00:00:00":null;
 		obj.setStartDate(startDate);
 		obj.setEndDate(endDate);
+		System.err.println(obj);
 		return biz.queryServices(obj, num, size);
 	}
 	/**
@@ -242,7 +267,12 @@ public class MerchantEnterAndServiceAction {
 	@GetMapping("api/queryServiceTypeChild")
 	@ResponseBody
 	public List<ServiceType> queryServiceTypeChild(Integer stpid){
-		return biz.queryServiceType(stpid, 1);
+		List<ServiceType> list = biz.queryServiceType(stpid, 1);
+		
+		/*for (ServiceType temp : list) {
+			System.err.println(temp);
+		}*/
+		return list;
 	}
 	/**
 	 * 查询城市
@@ -267,10 +297,17 @@ public class MerchantEnterAndServiceAction {
 		//评价查询
 		return biz.queryEvaluationserviceVO(num,size,sid);
 	}
+	
 	/**
-	 * 举报商家
-	 * @param obj
+	 * 
+	 * @title: saveServiceReport
+	 * @description: 举报 商家
+	 * @param session 
+	 * @param businessID //商家编号
+	 * @param serviceID //服务编号
+	 * @param ctID  //举报类别ID
 	 * @return
+	 * 上午10:06:12
 	 */
 	@PostMapping("api/report")
 	@ResponseBody
@@ -278,6 +315,8 @@ public class MerchantEnterAndServiceAction {
 		Map<String,String> message = new HashMap<String,String>();
 		User loginUser = (User)session.getAttribute("USER");	//登录对象：举报人
 		Integer loginUserID = loginUser.getUserID();	//当前举报人用户编号
+		loginUserID =biz.queryUser(24).getUserID();
+	//	System.out.println(businessID+","+serviceID+","+ctID);
 		if(biz.saveServiceReport(businessID, serviceID, loginUserID, ctID)>0) {
 			message.put("code", "200");
 			message.put("msg", "举报完成，请等待管理员审核");
@@ -298,7 +337,7 @@ public class MerchantEnterAndServiceAction {
 		Integer sid = srVOobj.getServiceID();	//服务编号
 		ServiceDetailInfo serDetailObj = biz.queryServiceDetailInfo(sid);	//服务详情对象
 		List<Resouroe> resouroeList = biz.queryResouroe();
-		System.out.println(JSON.toJSONString(srVOobj));
+	//	System.out.println(JSON.toJSONString(srVOobj));
 		model.addAttribute("srVOobj",srVOobj);	
 		model.addAttribute("serDetailObj",serDetailObj);
 		model.addAttribute("resouroeList",resouroeList);

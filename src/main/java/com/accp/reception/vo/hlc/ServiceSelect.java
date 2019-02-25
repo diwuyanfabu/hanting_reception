@@ -104,5 +104,15 @@ public class ServiceSelect {
 		super();
 		// TODO Auto-generated constructor stub
 	}
+	@Override
+	public String toString() {
+		return "ServiceSelect [txt=" + txt + ", startDate=" + startDate + ", endDate=" + endDate + ", country="
+				+ country + ", city=" + city + ", firstStid=" + firstStid + ", stid=" + stid + ", stidChild="
+				+ stidChild + ", transactionValueMin=" + transactionValueMin + ", transactionValueMax="
+				+ transactionValueMax + ", transactionValueID=" + transactionValueID + ", authentication="
+				+ authentication + ", orderByPop=" + orderByPop + ", orderByPrice=" + orderByPrice + "]";
+	}
+	
+	
 	
 }

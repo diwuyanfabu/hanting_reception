@@ -9,8 +9,15 @@
 		select * from
 	</sql>
 	
+	<!-- 查询用户信息 -->
+	<select id="queryUser" resultType="User">
+		SELECT * FROM `user`
+		where `userID` = #{userID}
+	</select>
+	
+	
 	<!-- 查询服务类别（如自驾游、微整形） -->
-	<select id="queryServiceType" resultType="Servicetype">
+	<select id="queryServiceType" resultType="ServiceType">
 		<include refid="selectAll"/>
 		`servicetype`
 		<where>
@@ -133,7 +140,7 @@
 	<select id="querySharea" resultType="ShArea">
 		<include refid="selectAll"/>
 		`sharea` 
-		<where>
+		<where>  
 			<if test="pid==null and flag==false">
 				`level` = 0
 			</if>
@@ -141,9 +148,9 @@
 				`pid` = #{pid}
 			</if>
 			<if test="pid!=2 and flag==true">
-				`pid` IN (SELECT `areaID` FROM `sharea` WHERE `pid` = #{pid})
-			</if>
-			<if test="pid==2 and flag==true">
+				`pid` IN (SELECT `areaID` FROM `sharea` WHERE `pid` = #{pid}) <!-- 查询中国的 -->
+			</if> 
+			<if test="pid==2 and flag==true">   <!-- 查询外国的 -->
 				`pid` = 2
 			</if>
 		</where>

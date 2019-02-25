@@ -35,6 +35,12 @@ import com.accp.reception.vo.hlc.ServiceSelect;
  *
  */
 public interface MerchantEnterAndServiceDao {
+	
+	//查询当前用户
+	public User queryUser(@Param("userID") Integer userID);
+	
+	
+	
 	/**
 	 * 查询服务类别
 	 * @param stpid 服务类别父级编号，为空则代表查询最高级服务类别
