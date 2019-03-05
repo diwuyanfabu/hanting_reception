@@ -21,7 +21,6 @@ import org.springframework.web.multipart.MultipartFile;
 import com.alibaba.fastjson.JSON;
 import com.github.pagehelper.PageInfo;
 
-import ch.qos.logback.core.net.SyslogOutputStream;
 
 import com.accp.reception.biz.hlc.MerchantEnterAndServiceBiz;
 import com.accp.reception.pojo.ComplaintType;
@@ -106,6 +105,40 @@ public class MerchantEnterAndServiceAction {
 			return "redirect:/fw-loginHint.html";
 		}
 	}
+	
+	
+
+	/**
+	 * 查询订单列表
+	 * 
+	 * @param page
+	 *            页数
+	 * @param orderid
+	 *            模糊订单号
+	 * @param status
+	 *            订单类型
+	 * @param model
+	 * @return
+	 *//*
+	@RequestMapping("/order/query/list")
+	public String queryOrderList(@RequestParam(defaultValue = "1") Integer page,
+			@RequestParam(defaultValue = "") String orderid, @RequestParam(defaultValue = "") Integer status,
+			@RequestParam(required = false) Integer commentstatus, Model model, HttpSession session) {
+		Integer userId = ((User) session.getAttribute("USER")).getUserID()();
+		Orders order = new Orders();
+		order.setUserID(userId);
+		order.setOrderID(orderid);
+		order.setOrderStatus(status);
+		order.setCommentstatus(commentstatus);
+		PageInfo<Orders> pageInfo = orderBiz.queryOrderList(order, page, 10);
+		model.addAttribute("pageInfo", pageInfo);
+		model.addAttribute("orderInfo", orderBiz.queryOrderInfo(userId));
+		return "grzx-order";
+	}
+	*/
+	
+	
+	
 	/**
 	 * 商家入驻填写资料地址
 	 * @param model
@@ -368,7 +401,8 @@ public class MerchantEnterAndServiceAction {
 		}
 		obj.setOrderID(orderID);
 		obj.setUserID(loginUserID);
-		biz.submitReserve(obj);
+		int ret = biz.submitReserve(obj);
+		System.err.println("服务是否成功:"+ret);
 		return "redirect:/c/lhy/order/query/list";
 	}
 	/**

@@ -3,7 +3,7 @@
 
 <head>
 <meta charset="UTF-8">
-<title>自驾游详情_韩汀社区</title>
+<title>微整形详情_韩汀社区</title>
 <link rel="stylesheet" th:href="@{/Public/css/owl.carousel.css}" />
 <link rel="stylesheet" th:href="@{/Public/css/common.css}" />
 <style type="text/css">
@@ -41,10 +41,10 @@
 		<div class="b_box nav_header community_header">
 			<a href="/index.php/" class="logo logo_community">御品韩汀.社区</a>
 			<ul class="nav_ul">
-				<li class="cur"><a
-					href="/c/lsm/serviceUrl?htmlUrl=fw-zjyTAB&stid=1"><span
+				<li><a href="/c/lsm/serviceUrl?htmlUrl=fw-zjyTAB&stid=1"><span
 						class="community_sp csp1"></span><br>自驾游</a></li>
-				<li><a href="/c/lsm/serviceUrl?htmlUrl=fw-wzxTAB&stid=2"><span
+				<li class="cur"><a
+					href="/c/lsm/serviceUrl?htmlUrl=fw-wzxTAB&stid=2"><span
 						class="community_sp csp2"></span><br>微整形</a></li>
 				<li><a href="/c/lsm/serviceUrl?htmlUrl=fw-lxzjTAB&stid=3"><span
 						class="community_sp csp3"></span><br>留学中介</a></li>
@@ -75,14 +75,13 @@
 					<dd>
 						<div class="business_user_top_d">
 							<div class="pre_c_name fl">
-								<a href="javascript:void(0);"th:text="${serMerchantObj.shopName}">小明同学</a>
+								<a href="javascript:void(0);"
+									th:text="${serMerchantObj.shopName}">小明同学</a>
 							</div>
 							<div class="star_pl">
-								<span class="star_pl_sp" th:style="|width:${serMerchantObj.merchantLevel*20}%;|"></span>
+								<span class="star_pl_sp"
+									th:style="|width:${serMerchantObj.merchantLevel*20}%;|"></span>
 							</div>
-							
-							<!-- <div th:text="${serMerchantObj.merchantLevel}">[[serMerchantObj.merchantLevel]]</div> -->
-							
 							<ul class="jp_ul_list">
 								<li
 									th:if="${serMerchantObj.firstServiceLevelName!=null and serMerchantObj.firstServiceLevelName!=''}"
@@ -93,39 +92,28 @@
 							</ul>
 						</div>
 						<div class="business_c_info business_c_info2 bdbox_show">
-							<span class="bcin_sp bsp1"></span> 
-							<a href="javascript:void(0);">
+							<span class="bcin_sp bsp1"></span> <a href="javascript:void(0);">
 								订单[[${serMerchantObj.orderCount==null||serMerchantObj.orderCount==''?0:serMerchantObj.orderCount}]]
-							</a> <span class="bbs_line"></span> 
-							<a href="javascript:void(0);">
+							</a> <span class="bbs_line"></span> <a href="javascript:void(0);">
 								<span class="bcin_sp bsp2"></span>
 								[[${serMerchantObj.liveCityName}]]
-							</a> <span class="bbs_line"></span> 
-							<a href="javascript:void(0);"
-								class="lan_my">
-								
-							</a><!-- 可以去掉 -->
-							
-							<span class="bcin_sp bsp3"></span>
-								[[${serMerchantObj.languageNameText}]] <span class="bbs_line"></span>
+							</a> <span class="bbs_line"></span> <a href="javascript:void(0);"
+								class="lan_my"> </a> <span class="bcin_sp bsp3"></span>
+							[[${serMerchantObj.languageNameText}]] <span class="bbs_line"></span>
 							<a href="javascript:void(0);"
 								th:if="${serMerchantObj.guaranteeMoney>0}"> <span
-									class="bzj_i"></span>保证金缴纳
-							</a>
-							<span class="bbs_line"></span> 
-							<a href="javascript:void(0);"
-								class="btna_a_jb">举报
-							</a>
-							<span class="bbs_line"></span>
+								class="bzj_i"></span>保证金缴纳
+							</a> <span class="bbs_line"></span> <a href="javascript:void(0);"
+								class="btna_a_jb">举报</a> <span class="bbs_line"></span>
 							<div class="bdsharebuttonbox bdshare-button-style0-24"
-									data-bd-bind="1538900686003">
-									<a href="javascript:void(0);" class="btna_s2 bds_more"data-cmd="more">
-									<span class="bcin_sp bsp4"></span>分享
-									</a>
-							</div> 
-							<a href="javascript:void(0);" class="sc_btn1" rel="577"style="width: auto;"th:onclick="|serviceCollection(${serDetailObj.serviceID});|">
-									<span class="sc_ic"></span>收藏&nbsp;[[${serMerchantObj.collectCount==null||serMerchantObj.collectCount==''?0:serMerchantObj.collectCount}]]
-							</a> 
+								data-bd-bind="1538900686003">
+								<a href="javascript:void(0);" class="btna_s2 bds_more"
+									data-cmd="more"><span class="bcin_sp bsp4"></span>分享</a>
+							</div>
+							<a href="javascript:void(0);" class="sc_btn1" rel="577"
+								style="width: auto;"
+								th:onclick="|serviceCollection(${serDetailObj.serviceID});|"><span
+								class="sc_ic"></span>收藏&nbsp;[[${serMerchantObj.collectCount==null||serMerchantObj.collectCount==''?0:serMerchantObj.collectCount}]]</a>
 							<input type="hidden" id="sc_ic" value="0">
 						</div>
 					</dd>
@@ -205,12 +193,11 @@
 				<!--自驾游在线预约-->
 				<div class="business_part_top">
 					<div class="business_detail_online_box"
-						style="bottom: -470px; height: 425px;">
+						style="bottom: -394px; height: 385px;">
 						<h2 class="online_h2">在线预约</h2>
 						<div class="online_part">
 							<div class="fr">
-								<span class="num_1" th:text="${serDetailObj.servicePrice}">2500</span>
-								/[[${serDetailObj.serviceHour}]]小时/天
+								<span class="num_1" th:text="${serDetailObj.servicePrice}">599</span>
 							</div>
 							<p>[[${serDetailObj.serviceFuTitle==null||serDetailObj.serviceFuTitle==''?'无副标题':serDetailObj.serviceFuTitle}]]</p>
 						</div>
@@ -227,15 +214,13 @@
 							</dl>
 						</div>
 						<form id="formbook" method="post" action="/c/lsm/serReserveUrl">
-							<dl class="online_dl online_dl2">
+							<dl class="online_dl">
 								<dt>
 									<p class="c_4 p_tti">预约日期</p>
-									<input type="date" name="reserveStartDate" />
-									<p>至</p>
-									<input type="date" name="reserveEndDate" />
+									<input type="date" name="reserveDate" />
 								</dt>
 								<dd>
-									<p class="c_4 p_tti">旅客人数</p>
+									<p class="c_4 p_tti">预定人数</p>
 									<select class="sel_online_1" name="personCount"
 										id="personCount">
 										<option value="1">1人</option>
@@ -251,13 +236,15 @@
 								</dd>
 								<div class="clear"></div>
 							</dl>
-							<a href="javascript:void(0);" class="online_sq_btn"onclick="reserveCheck()"> <span class="st_1">金币合计</span> 
-							<span class="st_2">申请预定</span> <span class="st_3" th:text="${serDetailObj.servicePrice}">2500</span> <span
+							<a href="javascript:void(0);" class="online_sq_btn"
+								onclick="reserveCheck()"> <span class="st_1">金币合计</span> <span
+								class="st_2">申请预定</span> <span class="st_3"
+								th:text="${serDetailObj.servicePrice}">599</span> <span
 								class="st_4"></span>
-							</a> <input type="hidden" name="serviceTypeID" value="1" /> <input
+							</a> <input type="hidden" name="serviceTypeID" value="2" /> <input
 								type="hidden" name="serviceID"
 								th:value="${serDetailObj.serviceID}" /> <input type="hidden"
-								name="subtotal" /> <input type="hidden" name="reserveDayCount" />
+								name="subtotal" />
 						</form>
 					</div>
 				</div>
@@ -289,8 +276,7 @@
 			</h2>
 			<dl class="business_dtail_bottom_dl">
 				<dt>
-					<p class="pf_text"
-						th:if="${(esLObj.level1+esLObj.level2+esLObj.level3+esLObj.level4+esLObj.level5)!=0}"
+					<p class="pf_text" th:if="${(esLObj.level1+esLObj.level2+esLObj.level3+esLObj.level4+esLObj.level5)!=0}"
 						th:text="${(esLObj.level1*1+esLObj.level2*2+esLObj.level3*3+esLObj.level4*4+esLObj.level5*5)*1.0/(esLObj.level1+esLObj.level2+esLObj.level3+esLObj.level4+esLObj.level5)}">3.0</p>
 					<div class="star_pl pl_star_d">
 						<span class="star_pl_sp"
@@ -422,7 +408,6 @@
 			<div class="owl-wrapper-outer">
 				<div class="owl-wrapper"
 					th:style="|width: ${sameserList.size()*300}px; left: 0px; display: block; transition: all 1000ms ease 0s; transform: translate3d(0px, 0px, 0px);|">
-
 					<div class="owl-item" style="width: 300px;"
 						th:each="temp,iter : ${sameserList}">
 						<div class="item">
@@ -519,9 +504,9 @@
 	<!--right nav-->
 	<ul class="right_nav">
 		<li><a href="javascript:void(0);" class="rn_tel">客服电话</a>
-		<div class="over_show kf_tel">0731-2286-7673</div></li>
+			<div class="over_show kf_tel">0731-2286-7673</div></li>
 		<li><a href="javascript:void(0);" class="rn_wx">官方微信</a>
-		<div class="over_show">
+			<div class="over_show">
 				<img src="/Public/images/r_ewm.jpg" alt="" class="gw_ewm">
 			</div></li>
 		<li><a
@@ -559,34 +544,6 @@
 <script type="text/javascript" th:src="@{/js/hlc/sessionHeader.js}"></script>
 <script type="text/javascript" th:src="@{/Public/js/headLeftNav.js}"></script>
 <script th:inline="javascript">
-	
-	
-	
-	/* $(".top_right").html("");
-	$.getJSON("/c/lsm/user/queryAUser",function(data){
-		if(data==null){
-			alert();
-			$(".top_right").append($('<a href="/szy-login.html">登录</a><span class="ht_line"></span><a href="/szy-zuce.html">注册</a>'));
-		}else{
-			$(".top_right").append($('<a href="/c/lhy/center/home">'+data.userName+'</a> <span class="ht_line"></span><a href="/c/szy/user/close">退出</a><span class="ht_line"></span><a href="/xx-xtxx.html"><img src="/Public/images/e_i.png" alt=""></a>'));
-		}
-	}) */
-	
-	/* function serviceCollection(sid){
-	jQuery.getJSON("/c/lsm/user/queryAUser",function(data){
-		if(data!=null){
-			jQuery.getJSON("api/serviceCollection",{"sid":sid},function(result){
-				alert(result.msg);
-				location.reload();
-			});
-		}else{
-			location.href="/fw-loginHint.html";
-		}
-	});
-
-} */
-	
-	
 		var vm = new Vue({
 			el:"#vmCnt",
 			data:{
@@ -618,7 +575,7 @@
 			jQuery("#pop_bg").show();
 			jQuery(".pop_con").show();
 		})
-		//提交举报
+				//提交举报
 		jQuery(".btn_jba").click(function(){
 			jQuery.getJSON("/c/lsm/user/queryAUser",function(data){
 				if(data!=null){
@@ -714,63 +671,18 @@
 		function reserveCheck(){
 			var startDate = [[${#dates.format(serDetailObj.serviceStartDate,"yyyy-MM-dd")}]];
 			var endDate = [[${#dates.format(serDetailObj.serviceEndDate,"yyyy-MM-dd")}]];
-			var reserveStartDate = jQuery("[name=reserveStartDate]").val();
-			var reserveEndDate = jQuery("[name=reserveEndDate]").val();
-			var rsd = new Date(reserveStartDate);
-			var red = new Date(reserveEndDate);
-			
-			if(!(reserveStartDate>=startDate&&reserveStartDate<=endDate&&reserveEndDate>=startDate&&reserveEndDate<=endDate)){
+			var reserveDate = jQuery("[name=reserveDate]").val();
+			if(!(reserveDate>=startDate&&reserveDate<=endDate)){
 				alert("不在可预约日期内！");
 			}else{
-				if((red-rsd)/1000/3600/24<0){
-					alert("预约结束日期不能小于预约开始时间");
-				}else{
-					var subtotal = jQuery("a.online_sq_btn span:eq(2)").text();
-					jQuery("[name=subtotal]").val(subtotal);
-					jQuery("#formbook").submit();
-				}
-
+				var subtotal = jQuery("a.online_sq_btn span:eq(2)").text();
+				jQuery("[name=subtotal]").val(subtotal);
+				jQuery("#formbook").submit();
 			}
 		}
-		//日期改变，价格改变
-		jQuery("[type=date]").change(function(){
-			var startDate = [[${#dates.format(serDetailObj.serviceStartDate,"yyyy-MM-dd")}]];
-			var endDate = [[${#dates.format(serDetailObj.serviceEndDate,"yyyy-MM-dd")}]];
-			var reserveStartDate = jQuery("[name=reserveStartDate]").val();
-			var reserveEndDate = jQuery("[name=reserveEndDate]").val();
-			var rsd = new Date(reserveStartDate);
-			var red = new Date(reserveEndDate);
-			if((reserveStartDate>=startDate&&reserveStartDate<=endDate&&reserveEndDate>=startDate&&reserveEndDate<=endDate)){	//在预约时间内
-				if(jQuery("[name=reserveStartDate]").val()!=""&&jQuery("[name=reserveEndDate]").val()!=""){	//预约日期都不为空
-					if(jQuery("[name=reserveEndDate]").val()>=jQuery("[name=reserveStartDate]").val()){	//预约结束时间大于等于预约开始时间
-						var reserveDayCount = (red-rsd)/1000/3600/24+1;	//预约天数
-						jQuery("[name=reserveDayCount]").val(reserveDayCount);	//将预约天数存入表单隐藏域
-						jQuery("a.online_sq_btn span:eq(2)").text([[${serDetailObj.servicePrice}]]*reserveDayCount*(jQuery("[name=personCount]").val()));
-						/* alert([[${serDetailObj.servicePrice}]]*reserveDayCount);
-						alert(jQuery("[name=personCount]").val()); */
-					}
-				}
-			}
-		})
-		
+		//人数改变，价格改变
 		jQuery("#personCount").change(function(){
-			var startDate = [[${#dates.format(serDetailObj.serviceStartDate,"yyyy-MM-dd")}]];
-			var endDate = [[${#dates.format(serDetailObj.serviceEndDate,"yyyy-MM-dd")}]];
-			var reserveStartDate = jQuery("[name=reserveStartDate]").val();
-			var reserveEndDate = jQuery("[name=reserveEndDate]").val();
-			var rsd = new Date(reserveStartDate);
-			var red = new Date(reserveEndDate);
-			if((reserveStartDate>=startDate&&reserveStartDate<=endDate&&reserveEndDate>=startDate&&reserveEndDate<=endDate)){	//在预约时间内
-				if(jQuery("[name=reserveStartDate]").val()!=""&&jQuery("[name=reserveEndDate]").val()!=""){	//预约日期都不为空
-					if(jQuery("[name=reserveEndDate]").val()>=jQuery("[name=reserveStartDate]").val()){	//预约结束时间大于等于预约开始时间
-						var reserveDayCount = (red-rsd)/1000/3600/24+1;	//预约天数
-						jQuery("[name=reserveDayCount]").val(reserveDayCount);	//将预约天数存入表单隐藏域
-						jQuery("a.online_sq_btn span:eq(2)").text([[${serDetailObj.servicePrice}]]*reserveDayCount*(jQuery("[name=personCount]").val()));
-						/* alert([[${serDetailObj.servicePrice}]]*reserveDayCount);
-						alert(jQuery("[name=personCount]").val()); */
-					}
-				}
-			}
+			jQuery("a.online_sq_btn span:eq(2)").text([[${serDetailObj.servicePrice}]]*jQuery("#personCount").val());
 		})
 	</script>
 

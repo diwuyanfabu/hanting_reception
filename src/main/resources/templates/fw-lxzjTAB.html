@@ -3,8 +3,8 @@
 
 	<head>
 		<meta charset="UTF-8">
-		<title>自驾游_韩汀社区</title>
-		<link rel="stylesheet" href="/Public/css/common.css" />
+		<title>留学中介_韩汀社区</title>
+		<link rel="stylesheet" th:href="@{/Public/css/common.css}" />
 		<style type="text/css">
 			.tubiao img{
 				height: 18px;
@@ -29,19 +29,19 @@
 		    <div class="b_box nav_header community_header">
 				<a href="/index.php/" class="logo logo_community">御品韩汀.社区</a>
 				<ul class="nav_ul">
-					<li class="cur"><a href="/c/lsm/serviceUrl?htmlUrl=fw-zjyTAB&stid=1"><span class="community_sp csp1"></span><br>自驾游</a></li>
+					<li><a href="/c/lsm/serviceUrl?htmlUrl=fw-zjyTAB&stid=1"><span class="community_sp csp1"></span><br>自驾游</a></li>
 					<li><a href="/c/lsm/serviceUrl?htmlUrl=fw-wzxTAB&stid=2"><span class="community_sp csp2"></span><br>微整形</a></li>
-					<li><a href="/c/lsm/serviceUrl?htmlUrl=fw-lxzjTAB&stid=3"><span class="community_sp csp3"></span><br>留学中介</a></li>
+					<li class="cur"><a href="/c/lsm/serviceUrl?htmlUrl=fw-lxzjTAB&stid=3"><span class="community_sp csp3"></span><br>留学中介</a></li>
 					<li><a href="/c/lsm/serviceUrl?htmlUrl=fw-hyfyTAB&stid=4"><span class="community_sp csp4"></span><br>韩语翻译</a></li>
 					<li><a href="/c/lsm/serviceUrl?htmlUrl=fw-xxzyTAB&stid=5"><span class="community_sp csp5"></span><br>学习资源</a></li>
 					<li><a href="#"><span class="community_sp csp6"></span><br>韩汀物流</a></li>
-					<li><a href="/c/sxy/column?pid=1&page=1&orderId=1&essence=0"><span class="community_sp csp7"></span><br>韩汀·论坛 中文</a></li>
+					<li><a href="#"><span class="community_sp csp7"></span><br>韩汀·论坛 中文</a></li>
 				</ul>
 			</div>     
 		</div>
 
 		<!--banner-->
-		<div class="other_banner banner_1" style="background:url(/Uploads/desc/2017-01/20170105010410-93736.jpg) center center"></div>
+		<div class="other_banner banner_1" style="background:url(/Uploads/desc/2017-01/20170125010041-26459.jpg) center center"></div>
 		<!--banner end-->
 
 		<a href="/index.php/Home/About/help.html" target="_blank" class="zy_box">预定流程指引</a>
@@ -49,29 +49,21 @@
 		<div class="bg_c2 pt1" id="vmCnt">
 			<div class="b_box">
 				<dl class="community_dl">
-					<dt>韩汀自驾游，去哪不用愁</dt>
+					<dt>韩汀留学中介，一站式留学服务</dt>
 					<dd>
 						<div class="search_sec">
-							<form method="post" action="/index.php/Home/Service/learning.html">
-							<input type="text" name="findkey" placeholder="自驾游搜索" class="s_sec_input"><input type="button" class="s_sec_btn" @click="queryServices(1)"><input type="hidden" name="__hash__" value="d2d1b9e1875b57e5099abeb8716d7882_a89ff3f6a76adff42855327dbb39b670"></form>
+							<form method="post" action="/index.php/Home/Service/learning.html"><input type="text" name="findkey" placeholder="留学中介搜索" class="s_sec_input"><input type="button" class="s_sec_btn" @click="queryServices(1)"><input type="hidden" name="__hash__" value="d2d1b9e1875b57e5099abeb8716d7882_a89ff3f6a76adff42855327dbb39b670"></form>
 						</div>
 					</dd>
 				</dl>
 		
 				<div class="sel_box">
-					<dl class="sel_dl_box">
-						<dt><span class="sel_sp ss1"></span>时间</dt>
-						<dd>
-							<form method="post" action="/index.php/Home/Service/driving.html" onsubmit="return chkdriving()">
-								<input name="startDate" type="date" /><span class="z_span">至</span><input name="endDate" type="date"/>
-								<input type="button" value="搜索" class="submit_c" name="timeSel">
-							</form>
-						</dd>
-					</dl>
 					<dl class="sel_dl_box" style="display:block;" th:if="${countryList.size()>0}">
 						<dt><span class="sel_sp ss4"></span>国家</dt>
 						<dd>
 							<a class="cur" href="javascript:void(0);" id="countryAll"> 全部</a>
+							
+							<!-- 换 -->
 							<a href="javascript:void(0);" th:each="temp,iterState : ${countryList}" th:text="${temp.name}" th:attr="data-id=${temp.areaID}" th:v-on:click="|queryCity(${temp.areaID})|">中国</a>
 						</dd>
 						<dd>
@@ -97,7 +89,6 @@
 							<a v-for="(temp,index) in serviceTypeChild" href="javascript:void(0);" :data-id="temp.stid" v-text="temp.stName">韩语初级资料</a>			
 						</dd>
 					</dl>
-					<!-- <span th:text="${serLevelList.size()}"></span> -->
 					<dl class="sel_dl_box" th:if="${serLevelList.size()>0}">
 						<dt><span class="sel_sp ss3"></span>级别</dt>
 						<dd>
@@ -122,7 +113,7 @@
 		        <div class="rank_box">
 		        	<ul class="rank_list_ul">
 						<li v-for="(temp,index) in pageInfo.list">
-		                	<a :href="'/c/lsm/serviceDetailUrl?htmlUrl=fw-zjyXQ&sid='+temp.serviceID+'&uid='+temp.userID" class="rank_one_a">
+		                	<a :href="'/c/lsm/serviceDetailUrl?htmlUrl=fw-lxzjXQ&sid='+temp.serviceID+'&uid='+temp.userID" class="rank_one_a">
 			                    <div class="star_img">
 			                    	<img v-if="temp.recommendBool==true" style="z-index:3;position: absolute;" src="/Public/images/tj.png" width="50" height="50"> 
 			                    	<img :src="temp.serviceCoverImg" :alt="temp.serviceTitle" width="380" height="254">
@@ -203,20 +194,11 @@
 </ul>
 
 </body>
-	<script type="text/javascript " src="/Public/js/jquery-1.8.3.min.js"></script>
-	<script type="text/javascript" src="/Public/js/vue.js"></script>
-	<script type="text/javascript" src="/js/hlc/sessionHeader.js"></script>
-	<script type="text/javascript" src="/Public/js/headLeftNav.js"></script>
+	<script type="text/javascript " th:src="@{/Public/js/jquery-1.8.3.min.js}"></script>
+	<script type="text/javascript" th:src="@{/Public/js/vue.js}"></script>
+		<script type="text/javascript" src="/js/hlc/sessionHeader.js"></script>
+	<script type="text/javascript" th:src="@{/Public/js/headLeftNav.js}"></script>
 	<script th:inline="javascript">
-	
-	/* $(".top_right").html("");
-	$.getJSON("/c/lsm/user/queryAUser",function(data){
-		if(data==null){
-			$(".top_right").append($('<a href="/szy-login.html">登录</a><span class="ht_line"></span><a href="/szy-zuce.html">注册</a>'));
-		}else{
-			$(".top_right").append($('<a href="/c/lhy/center/home">'+data.userName+'</a> <span class="ht_line"></span><a href="/c/szy/user/close">退出</a><span class="ht_line"></span><a href="/xx-xtxx.html"><img src="/Public/images/e_i.png" alt=""></a>'));
-		}
-	}) */
 		var vm = new Vue({
 			el:"#vmCnt",
 			data:{
@@ -235,20 +217,10 @@
 				queryServices:function(num){
 					var vm = this;
 					var stid = [[${param.stid}]][0];
-					//var stid = 1;
 					var obj = {};
 					//如果文本框不为空
 					if(jQuery("[name=findkey]").val()!=''){
 						obj["txt"]=jQuery("[name=findkey]").val();
-					}
-					//alert(jQuery("[name=findkey]").val());
-					//如果开始时间不为空
-					if(jQuery("[name=startDate]").val()!=""){
-						obj["startDate"]=jQuery("[name=startDate]").val();
-					}
-					//如果结束时间不为空
-					if(jQuery("[name=endDate]").val()!=""){
-						obj["endDate"]=jQuery("[name=endDate]").val();
 					}
 					//如果国家不是全部
 					if(jQuery("#countryAll").parent().attr("data-id")!=null){
@@ -300,12 +272,10 @@
 				queryServiceTypeChild:function(stpid){
 					var vm = this;
 					if(jQuery(".sonType").attr("data-id")!=stpid){
-						//alert(stpid);
 						jQuery.getJSON("/c/lsm/api/queryServiceTypeChild",{"stpid":stpid},function(data){
 							if(data.length==0){
 								jQuery(".sonType").removeAttr("data-id").hide();
 							}else{
-								
 								jQuery(".sonType").attr("data-id",stpid).show().find("dd a.cur").removeClass();
 								jQuery(".sonType").find("dd").removeAttr("data-id");
 							}
@@ -320,7 +290,6 @@
 				//点击国家查询城市
 				queryCity:function(areaid){
 					var vm = this;
-					//alert("国家");
 					jQuery.getJSON("/c/lsm/api/queryCity",{"areaid":areaid},function(data){
 						if(data.length==0){
 							jQuery("#city").hide();
@@ -385,18 +354,6 @@
 				scrollTop: 0
 			}, 500);
 		});
-		//点击时间搜索
-		jQuery("[name=timeSel]").click(function(){
-			if(jQuery("[name=startDate]").val()==""){
-				alert("请选择开始时间");
-			}else if(jQuery("[name=endDate]").val()==""){
-				alert("请选择结束时间");
-			}else if(Date.parse(jQuery("[name=startDate]").val())>Date.parse(jQuery("[name=endDate]").val())){
-				alert("结束时间不能小于开始时间");
-			}else{
-				vm.queryServices(1);
-			}
-		})
 	</script>
 
 </html>
