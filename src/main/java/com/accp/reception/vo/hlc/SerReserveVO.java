@@ -11,6 +11,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 public class SerReserveVO {
 	private String orderID;	//订单号
 	private Integer userID;	//用户编号
+	private Integer stid; //服务编号
 	private Integer serviceID;	//服务编号 
 	private Integer serviceTypeID;	//一级服务类别编号
 	@DateTimeFormat(pattern="yyyy-MM-dd") 
@@ -26,6 +27,15 @@ public class SerReserveVO {
 	private Integer resouroeID;	//资料类别编号
 	private String remarks;	//备注留言
 	private String uploadPath;	//文件上传路径
+	
+	
+	
+	public Integer getStid() {
+		return stid;
+	}
+	public void setStid(Integer stid) {
+		this.stid = stid;
+	}
 	public Integer getServiceID() {
 		return serviceID;
 	}

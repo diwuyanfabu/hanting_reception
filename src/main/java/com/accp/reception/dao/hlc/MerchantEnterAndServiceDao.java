@@ -17,6 +17,7 @@ import com.accp.reception.pojo.Services;
 import com.accp.reception.pojo.ShArea;
 import com.accp.reception.pojo.User;
 import com.accp.reception.vo.hlc.AdvertisementVO;
+import com.accp.reception.vo.hlc.Artificiaiintelligence;
 import com.accp.reception.vo.hlc.EsLevelVO;
 import com.accp.reception.vo.hlc.EvaluationserviceVO;
 import com.accp.reception.vo.hlc.HomePostVO;
@@ -36,10 +37,15 @@ import com.accp.reception.vo.hlc.ServiceSelect;
  */
 public interface MerchantEnterAndServiceDao {
 	
+	//人工分析 查询
+	public List<Services> selectAI(@Param("userId")Integer userId,@Param("stid")Integer stid);
+	
+	//人工分析 添加
+	public int insertAI(@Param("ai") Artificiaiintelligence ai);
+	
+	
 	//查询当前用户
 	public User queryUser(@Param("userID") Integer userID);
-	
-	
 	
 	/**
 	 * 查询服务类别

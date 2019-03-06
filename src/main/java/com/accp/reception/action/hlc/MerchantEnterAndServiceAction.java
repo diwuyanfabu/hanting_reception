@@ -30,10 +30,12 @@ import com.accp.reception.pojo.Post;
 import com.accp.reception.pojo.Resouroe;
 import com.accp.reception.pojo.ServiceType;
 import com.accp.reception.pojo.Servicelevel;
+import com.accp.reception.pojo.Services;
 import com.accp.reception.pojo.ShArea;
 import com.accp.reception.pojo.User;
 import com.accp.reception.util.file.Upload;
 import com.accp.reception.vo.hlc.AdvertisementVO;
+import com.accp.reception.vo.hlc.Artificiaiintelligence;
 import com.accp.reception.vo.hlc.EsLevelVO;
 import com.accp.reception.vo.hlc.HomePostVO;
 import com.accp.reception.vo.hlc.SameServiceVO;
@@ -221,8 +223,8 @@ public class MerchantEnterAndServiceAction {
 	 * @return
 	 */
 	@GetMapping("serviceDetailUrl")
-	public String serviceDetailUrl(Model model,String htmlUrl,Integer sid,Integer uid) {
-	//	System.err.println(htmlUrl+","+sid+","+uid);
+	public String serviceDetailUrl(Model model,String htmlUrl,Integer sid,Integer uid,HttpSession session) {
+		System.err.println(htmlUrl+","+sid+","+uid);
 		//查询发布服务的商家信息
 		ServiceMerchantInfo serMerchantObj = biz.queryServiceMerchantInfo(uid,sid);
 	//	System.err.println(uid+","+sid);
@@ -248,6 +250,11 @@ public class MerchantEnterAndServiceAction {
 			//System.out.println(temp);
 		}
 		model.addAttribute("complainttypeList",complainttypeList);//Complainttype 举报原因
+		
+		User user = (User)session.getAttribute("USER");
+		if(user!=null) {
+			
+		}
 		return htmlUrl;
 	}
 	/**
@@ -267,12 +274,65 @@ public class MerchantEnterAndServiceAction {
 		model.addAttribute("countryList",countryList);	//将国家存入request
 		model.addAttribute("serTypeList",serTypeList);	//将当前一级服务类别的子类别存入request
 		model.addAttribute("serLevelList",serLevelList);//将当前一级服务类别的级别存入request
+		
+		/*User user = (User)session.getAttribute("USER");
+		
+		System.err.println(user);
+		if(user!=null) {
+			List<Services> ar = biz.selectAI(user.getUserID(), stid);
+			model.addAttribute("selectAI",ar);
+			System.err.println(ar.size());
+		}else {
+			model.addAttribute("selectAI",biz.selectAI(0, stid));
+		}*/
 		for (Servicelevel shArea : serLevelList) {
 			//System.err.println(shArea);
 		}
 		return htmlUrl;
 	}
-
+	
+	/**
+	 * 人工智能 查询
+	 * @return
+	 */
+	@GetMapping("api/selectAI")
+	@ResponseBody
+	public List<Services> selectAI(Integer stid,HttpSession session){
+		User user = (User)session.getAttribute("USER");
+		if(user!=null) {
+			List<Services> ai = biz.selectAI(user.getUserID(), stid);
+			System.err.println(ai.size());
+			return ai;
+		}else {
+			return biz.selectAI(0, stid);
+		}
+	}
+	
+	
+	/**
+	 * 
+	 * @title: insertAI
+	 * @description: 人工智能 添加
+	 * @param session
+	 * @param sid
+	 * @return
+	 * 下午9:21:04
+	 */
+	@GetMapping("api/insertAI")
+	@ResponseBody
+	public Map<String,String> insertAI(HttpSession session,String ai){
+		Map<String,String> message = new HashMap<String,String>();
+		User user = (User)session.getAttribute("USER");
+		if(user!=null) {
+			Artificiaiintelligence ail =  JSON.parseObject(ai,Artificiaiintelligence.class);
+			System.out.println(ail);
+			ail.setUserId(user.getUserID());
+			biz.insertAI(ail);
+		}
+		return message;
+	}
+	
+	
 	/**
 	 * 根据服务列表条件查询服务
 	 * @return

@@ -3,12 +3,22 @@ package com.accp.reception.vo.hlc;
 public class ServicesVO {
 	private Integer serviceID;	//服务编号
 	private Integer userID;	//用户编号
+	private Integer stid; //服务id
 	private String serviceTitle;	//服务标题
 	private String serviceCoverImg;	//服务封面图路径
 	private Integer servicePrice;	//服务价格
 	private boolean recommendBool;	//商家推荐
 	private String shopImg;	//店铺图片路径
 	private String shopName;	//店铺名
+	
+	
+	
+	public Integer getStid() {
+		return stid;
+	}
+	public void setStid(Integer stid) {
+		this.stid = stid;
+	}
 	public String getServiceTitle() {
 		return serviceTitle;
 	}

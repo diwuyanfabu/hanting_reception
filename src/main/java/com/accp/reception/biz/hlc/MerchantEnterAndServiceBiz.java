@@ -2,6 +2,7 @@ package com.accp.reception.biz.hlc;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Isolation;
@@ -17,9 +18,11 @@ import com.accp.reception.pojo.ServiceCollection;
 import com.accp.reception.pojo.ServiceDes;
 import com.accp.reception.pojo.ServiceType;
 import com.accp.reception.pojo.Servicelevel;
+import com.accp.reception.pojo.Services;
 import com.accp.reception.pojo.ShArea;
 import com.accp.reception.pojo.User;
 import com.accp.reception.vo.hlc.AdvertisementVO;
+import com.accp.reception.vo.hlc.Artificiaiintelligence;
 import com.accp.reception.vo.hlc.EsLevelVO;
 import com.accp.reception.vo.hlc.HomePostVO;
 import com.accp.reception.vo.hlc.SameServiceVO;
@@ -37,9 +40,44 @@ import com.github.pagehelper.PageInfo;
 @Transactional(propagation = Propagation.SUPPORTS, isolation = Isolation.READ_COMMITTED, readOnly = true)
 public class MerchantEnterAndServiceBiz {
 
+	
 	//@Transactional(propagation = Propagation.REQUIRED, isolation = Isolation.READ_COMMITTED, readOnly = false)
 	@Autowired
 	private MerchantEnterAndServiceDao dao;
+	
+	
+	
+	
+	
+	
+	/**
+	 * 
+	 * @title: selectAI
+	 * @description:人工分析 查询
+	 * @param userId
+	 * @param stid
+	 * @return
+	 * 下午3:42:37
+	 */
+	public List<Services> selectAI(Integer userId,Integer stid){
+		return dao.selectAI(userId, stid);
+	}
+	
+	/**
+	 * 
+	 * @title: insertAI
+	 * @description:人工分析 添加
+	 * @param ai
+	 * @return
+	 * 下午3:42:50
+	 */
+	public int insertAI(Artificiaiintelligence ai) {
+		return dao.insertAI(ai);
+	}
+	
+	
+	
+	
 	
 	
 	/**
