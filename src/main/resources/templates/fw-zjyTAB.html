@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+
 
 	<head>
 		<meta charset="UTF-8">
@@ -167,14 +167,16 @@
 		            <!--page end-->
 		        </div>
 				
-				<div v-text="selectAI.size">11</div>
-				<div class="page_w" v-if="selectAI.size>0"></div>
+				
+				<!-- 猜你喜欢 -->
 				<div class="rank_box" style="margin-top: 20px">
-					<div v-if="selectAI.size>0" style="font-size: 25px;color:#FFA818;font-weight: 500;margin-bottom: 20px;">猜你喜欢</div>
+					<div class="page_div" style="font-size: 25px;color:#FFA818;font-weight: 500;margin-bottom: 20px;">猜你喜欢</div>
+					<div class="page_w page_two"></div>
 		        	<ul class="rank_list_ul">
 						<li  v-for="(temp,index) in selectAI">
 		                	<a :href="'/c/lsm/serviceDetailUrl?htmlUrl=fw-zjyXQ&sid='+temp.serviceID+'&uid='+temp.userID" @click="insertAI(temp.stid)" class="rank_one_a">
 			                    <div class="star_img">
+			                    
 			                    	<img v-if="temp.recommendBool==true" style="z-index:3;position: absolute;" src="/Public/images/tj.png" width="50" height="50"> 
 			                    	<img :src="temp.serviceCoverImg" :alt="temp.serviceTitle" width="380" height="254">
 			                    </div>
@@ -335,17 +337,23 @@
 						console.info(data);
 					})
 				},
+				//猜你喜欢
 				selectai:function(){
 					jQuery.getJSON("/c/lsm/api/selectAI",{"stid":[[${param.stid}]][0]},function(data){
 						vm.selectAI = data;
+						//alert(data.length);
+						if(data.length==0){
+							jQuery(".page_two").css("display","none");
+							jQuery(".page_div").css("display","none");
+						}else{
+							jQuery(".page_two").css("display","block");
+							jQuery(".page_div").css("display","inline-block");
+						}
 						console.info(data);
 					})
 				},
-				//添加  ’大数据‘  的数据    id:服务的id
+				//添加  ’猜你喜欢‘  的数据    id:服务的id
 				insertAI:function(id){
-					alert("a");
-					alert(id);
-					//alert(jQuery(th).text());
 					var ai = {};
 					ai["firstStid"]= [[${param.stid}]][0];
 					ai["stid"] = id;
